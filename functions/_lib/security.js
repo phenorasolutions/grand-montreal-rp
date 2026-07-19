@@ -108,6 +108,10 @@ export function normalizeUsername(value) {
   return String(value || "").trim().toLowerCase();
 }
 
+export function validUsername(username) {
+  return /^[a-z0-9._-]{3,40}$/.test(username);
+}
+
 export function getClientIp(request) {
   return request.headers.get("CF-Connecting-IP") || "unknown";
 }
