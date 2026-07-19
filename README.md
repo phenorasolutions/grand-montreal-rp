@@ -1,21 +1,22 @@
-# Grand Montréal RP V4
+# Grand Montréal RP V5
 
 ## Installation
 
 1. Décompresse le ZIP.
 2. Ouvre le dépôt GitHub `phenorasolutions/grand-montreal-rp`.
-3. Clique sur **Add file** puis **Upload files**.
-4. Glisse les fichiers `index.html`, `styles.css`, `script.js`, `README.md` et le dossier `assets`.
+3. Clique sur **Add file** → **Upload files**.
+4. Glisse `index.html`, `styles.css`, `script.js`, `README.md` et le dossier `assets`.
 5. Remplace les anciens fichiers.
 6. Clique sur **Commit changes**.
 7. Attends le déploiement Cloudflare et recharge avec **Ctrl + F5**.
 
-## Déjà configuré
+## Nouveautés
 
-- Logo officiel
-- Image d'accueil
-- Lien Discord
-- Lien FiveM
-- Navigation mobile
-- Animations au défilement
-- Nouvelle structure Services, Économie, Galerie, FAQ
+- Refonte éditoriale complète.
+- Effets visuels plus haut de gamme.
+- Logo animé.
+- Curseur lumineux discret sur ordinateur.
+- Section SPGM mise en vedette.
+- Nouvelle économie et nouvelle galerie.
+- Tentative de statut FiveM en direct avec repli propre si l'API refuse la requête.
+- Liens Discord et FiveM déjà intégrés.

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Grand Montréal RP Remastered — Une ville. Une histoire. Votre rôle.">
-  <meta name="theme-color" content="#080a0e">
+  <meta name="theme-color" content="#07090d">
   <title>Grand Montréal RP Remastered</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,12 +14,13 @@
 </head>
 
 <body>
-  <div class="page-grain" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
   <header class="site-header" id="siteHeader">
     <a class="brand" href="#accueil" aria-label="Grand Montréal RP">
       <img src="assets/logo.png" alt="Logo Grand Montréal RP">
-      <div class="brand-text">
+      <div>
         <strong>GRAND MONTRÉAL <span>RP</span></strong>
         <small>REMASTERED</small>
       </div>
@@ -49,45 +50,63 @@
       <div class="hero-media" aria-hidden="true"></div>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-red-glow" aria-hidden="true"></div>
+      <div class="hero-scanline" aria-hidden="true"></div>
 
       <div class="hero-content">
         <div class="hero-copy reveal">
-          <p class="eyebrow">SERVEUR DE JEU DE RÔLE QUÉBÉCOIS</p>
-          <h1>UNE VILLE.<br>UNE HISTOIRE.<br><span>VOTRE RÔLE.</span></h1>
+          <div class="hero-label">
+            <span class="label-line"></span>
+            <p>GRAND MONTRÉAL RP REMASTERED</p>
+          </div>
+
+          <h1>
+            UNE VILLE.<br>
+            UNE HISTOIRE.<br>
+            <span>VOTRE RÔLE.</span>
+          </h1>
+
           <p class="hero-lead">
-            Grand Montréal RP Remastered propose une expérience structurée où les citoyens, les entreprises et les services publics façonnent réellement la ville.
+            Une expérience de rôleplay québécoise structurée où chaque citoyen, chaque entreprise et chaque service public peut laisser une marque durable.
           </p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="https://cfx.re/join/k7oxyd" target="_blank" rel="noopener">Jouer maintenant</a>
-            <a class="button button-secondary" href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">Rejoindre Discord</a>
+            <a class="button button-primary" href="https://cfx.re/join/k7oxyd" target="_blank" rel="noopener">
+              <span>Jouer maintenant</span>
+              <b>↗</b>
+            </a>
+            <a class="button button-secondary" href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">
+              <span>Rejoindre Discord</span>
+            </a>
           </div>
 
-          <div class="hero-status">
-            <div class="status-main">
-              <span class="live-dot"></span>
+          <div class="live-panel" id="livePanel">
+            <div class="live-main">
+              <span class="live-dot" id="liveDot"></span>
               <div>
-                <strong>Serveur accessible</strong>
-                <small>Connexion FiveM directe</small>
+                <strong id="serverState">Vérification du serveur</strong>
+                <small id="serverName">Grand Montréal RP</small>
               </div>
             </div>
-            <div class="status-item">
-              <strong>WL</strong>
-              <small>Accès encadré</small>
+            <div class="live-stat">
+              <strong id="playerCount">—</strong>
+              <small>Joueurs</small>
             </div>
-            <div class="status-item">
-              <strong>QC</strong>
-              <small>Identité québécoise</small>
+            <div class="live-stat">
+              <strong id="serverCapacity">—</strong>
+              <small>Capacité</small>
             </div>
           </div>
         </div>
 
-        <div class="hero-logo reveal">
-          <div class="hero-logo-ring"></div>
+        <div class="hero-mark reveal" aria-hidden="true">
+          <div class="mark-orbit orbit-one"></div>
+          <div class="mark-orbit orbit-two"></div>
+          <div class="mark-glow"></div>
           <img src="assets/logo.png" alt="">
         </div>
       </div>
+
+      <div class="hero-side-label" aria-hidden="true">MONTRÉAL • QUÉBEC • FIVEM</div>
 
       <a class="scroll-cue" href="#vision" aria-label="Faire défiler">
         <span></span>
@@ -95,234 +114,238 @@
     </section>
 
     <section class="section vision" id="vision">
+      <div class="section-index reveal">01</div>
+
       <div class="section-heading reveal">
-        <p class="eyebrow">UNE DIRECTION CLAIRE</p>
-        <h2>PAS UNE COLLECTION DE SCRIPTS.<br><span>UNE VILLE COHÉRENTE.</span></h2>
+        <p class="eyebrow">LA VISION</p>
+        <h2>UN MONDE QUI RÉAGIT<br><span>À VOS DÉCISIONS</span></h2>
       </div>
 
       <div class="vision-layout">
-        <div class="vision-copy reveal">
-          <p class="lead">
-            Le serveur est pensé autour des interactions entre joueurs, pas autour d'une course aux fonctionnalités.
-          </p>
+        <div class="vision-statement reveal">
           <p>
-            Chaque système doit créer du jeu : une banque doit financer, une entreprise doit embaucher, un service public doit décider, et chaque citoyen doit pouvoir construire une histoire qui a des conséquences.
+            Grand Montréal RP n'est pas une collection de systèmes empilés. C'est une ville pensée pour générer des histoires, des conséquences et des relations durables.
           </p>
         </div>
 
-        <div class="vision-points">
-          <article class="vision-point reveal">
+        <div class="vision-list">
+          <article class="vision-item reveal">
             <span>01</span>
             <div>
-              <h3>Rôleplay structuré</h3>
-              <p>Un cadre clair qui protège la qualité sans rendre le jeu rigide.</p>
+              <h3>Immersion utile</h3>
+              <p>Chaque fonctionnalité doit soutenir le rôleplay, jamais le remplacer.</p>
             </div>
           </article>
-          <article class="vision-point reveal">
+          <article class="vision-item reveal">
             <span>02</span>
             <div>
-              <h3>Économie connectée</h3>
-              <p>Les métiers, les commerces et les services dépendent les uns des autres.</p>
+              <h3>Économie interdépendante</h3>
+              <p>Les entreprises, les citoyens et les services publics ont besoin les uns des autres.</p>
             </div>
           </article>
-          <article class="vision-point reveal">
+          <article class="vision-item reveal">
             <span>03</span>
             <div>
-              <h3>Identité locale</h3>
-              <p>Une ambiance inspirée du Grand Montréal avec une personnalité propre.</p>
+              <h3>Conséquences cohérentes</h3>
+              <p>Les décisions créent des résultats qui influencent réellement la ville.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="stats-strip" aria-label="Statistiques du serveur">
-      <div class="stats-inner">
-        <div class="stat reveal">
-          <strong>04</strong>
-          <span>Services publics majeurs</span>
-        </div>
-        <div class="stat reveal">
-          <strong>06+</strong>
-          <span>Secteurs d'entreprise</span>
-        </div>
-        <div class="stat reveal">
-          <strong>24/7</strong>
-          <span>Ville persistante</span>
-        </div>
-        <div class="stat reveal">
-          <strong>100%</strong>
-          <span>Orientation RP québécoise</span>
-        </div>
+    <section class="metrics">
+      <div class="metrics-inner">
+        <article class="metric reveal">
+          <span>04</span>
+          <p>Services publics structurés</p>
+        </article>
+        <article class="metric reveal">
+          <span>06+</span>
+          <p>Secteurs économiques</p>
+        </article>
+        <article class="metric reveal">
+          <span>24/7</span>
+          <p>Ville persistante</p>
+        </article>
+        <article class="metric reveal">
+          <span>QC</span>
+          <p>Identité québécoise</p>
+        </article>
       </div>
     </section>
 
     <section class="services-section" id="services">
       <div class="section">
+        <div class="section-index reveal">02</div>
+
         <div class="section-heading split reveal">
           <div>
-            <p class="eyebrow">SERVIR LE GRAND MONTRÉAL</p>
-            <h2>DES DÉPARTEMENTS QUI COMPTENT</h2>
+            <p class="eyebrow">SERVICES PUBLICS</p>
+            <h2>DES DÉPARTEMENTS<br>QUI FONT VIVRE LA VILLE</h2>
           </div>
           <p>
-            Chaque service possède une structure, des responsabilités et une influence réelle sur l'équilibre de la ville.
+            Ils ne sont pas là pour décorer le serveur. Ils enquêtent, interviennent, soignent, jugent et créent du jeu pour toute la communauté.
           </p>
         </div>
 
-        <div class="service-list">
-          <article class="service-row reveal">
-            <div class="service-number">01</div>
-            <div class="service-visual police"></div>
-            <div class="service-copy">
+        <div class="service-showcase">
+          <article class="service-feature service-police reveal">
+            <div class="service-art">
+              <span class="service-code">SPGM</span>
+              <div class="service-light"></div>
+            </div>
+            <div class="service-info">
               <p>SÉCURITÉ PUBLIQUE</p>
-              <h3>SPGM</h3>
-              <span>Patrouille, enquêtes, circulation, unités spécialisées et gestion opérationnelle.</span>
-              <a href="#">Découvrir le service</a>
+              <h3>Service de police du Grand Montréal</h3>
+              <span>Patrouille, enquêtes, circulation, unités spécialisées et opérations coordonnées.</span>
+              <a href="#">Découvrir le SPGM <b>↗</b></a>
             </div>
           </article>
 
-          <article class="service-row reverse reveal">
-            <div class="service-number">02</div>
-            <div class="service-visual fire"></div>
-            <div class="service-copy">
+          <div class="service-secondary">
+            <article class="service-tile fire reveal">
+              <div class="tile-number">02</div>
               <p>SÉCURITÉ INCENDIE</p>
               <h3>SIM</h3>
-              <span>Incendies, sauvetage, prévention, coordination et interventions majeures.</span>
-              <a href="#">Découvrir le service</a>
-            </div>
-          </article>
-
-          <article class="service-row reveal">
-            <div class="service-number">03</div>
-            <div class="service-visual medical"></div>
-            <div class="service-copy">
+              <span>Incendies, sauvetage et prévention.</span>
+            </article>
+            <article class="service-tile medical reveal">
+              <div class="tile-number">03</div>
               <p>SANTÉ PRÉHOSPITALIÈRE</p>
               <h3>PARAMÉDICS</h3>
-              <span>Soins d'urgence, stabilisation, transport médical et soutien aux scènes complexes.</span>
-              <a href="#">Découvrir le service</a>
-            </div>
-          </article>
-
-          <article class="service-row reverse reveal">
-            <div class="service-number">04</div>
-            <div class="service-visual justice"></div>
-            <div class="service-copy">
+              <span>Soins, stabilisation et transport.</span>
+            </article>
+            <article class="service-tile justice reveal">
+              <div class="tile-number">04</div>
               <p>SYSTÈME JUDICIAIRE</p>
               <h3>JUSTICE</h3>
-              <span>Avocats, procureurs, tribunaux et décisions qui donnent du poids aux actions.</span>
-              <a href="#">Découvrir le service</a>
-            </div>
-          </article>
+              <span>Avocats, procureurs et tribunaux.</span>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section economy" id="economie">
-      <div class="section-heading reveal">
-        <p class="eyebrow">UNE ÉCONOMIE ENTRE LES MAINS DES JOUEURS</p>
-        <h2>CRÉER, GÉRER, DÉVELOPPER</h2>
+      <div class="section-index reveal">03</div>
+
+      <div class="section-heading split reveal">
+        <div>
+          <p class="eyebrow">ÉCONOMIE CITOYENNE</p>
+          <h2>CRÉEZ PLUS<br>QU'UN COMMERCE</h2>
+        </div>
         <p>
-          Les entreprises doivent générer du rôleplay, pas seulement distribuer des salaires. Elles ont des responsabilités, des coûts, des employés et une réputation à construire.
+          Gérez des employés, des stocks, des contrats et une réputation. Une entreprise réussit parce qu'elle crée du rôleplay autour d'elle.
         </p>
       </div>
 
-      <div class="economy-grid">
-        <article class="economy-card reveal">
-          <span>01</span>
-          <h3>Restauration</h3>
-          <p>Approvisionnement, production, service et gestion du personnel.</p>
+      <div class="economy-layout">
+        <article class="economy-highlight reveal">
+          <div class="economy-highlight-bg"></div>
+          <div class="economy-highlight-content">
+            <p>ENTREPRENEURIAT</p>
+            <h3>UNE VILLE DIRIGÉE PAR SES CITOYENS</h3>
+            <span>Les projets les plus solides peuvent devenir de véritables institutions du Grand Montréal.</span>
+          </div>
         </article>
-        <article class="economy-card reveal">
-          <span>02</span>
-          <h3>Automobile</h3>
-          <p>Vente, mécanique, remorquage, financement et personnalisation.</p>
-        </article>
-        <article class="economy-card reveal">
-          <span>03</span>
-          <h3>Finance</h3>
-          <p>Comptes, prêts, investissements et accompagnement des entreprises.</p>
-        </article>
-        <article class="economy-card reveal">
-          <span>04</span>
-          <h3>Télécommunications</h3>
-          <p>Appareils, forfaits, services numériques et connectivité.</p>
-        </article>
-        <article class="economy-card reveal">
-          <span>05</span>
-          <h3>Sécurité privée</h3>
-          <p>Contrats, transport sécurisé et protection commerciale.</p>
-        </article>
-        <article class="economy-card reveal">
-          <span>06</span>
-          <h3>Projets citoyens</h3>
-          <p>Des initiatives encadrées qui répondent aux besoins réels de la ville.</p>
-        </article>
+
+        <div class="economy-list">
+          <article class="economy-row reveal">
+            <span>01</span><h3>Restauration</h3><p>Approvisionnement, production et service.</p>
+          </article>
+          <article class="economy-row reveal">
+            <span>02</span><h3>Automobile</h3><p>Vente, mécanique, remorquage et financement.</p>
+          </article>
+          <article class="economy-row reveal">
+            <span>03</span><h3>Finance</h3><p>Comptes, prêts et accompagnement commercial.</p>
+          </article>
+          <article class="economy-row reveal">
+            <span>04</span><h3>Télécommunications</h3><p>Appareils, forfaits et services numériques.</p>
+          </article>
+          <article class="economy-row reveal">
+            <span>05</span><h3>Sécurité privée</h3><p>Contrats, protection et transport sécurisé.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="gallery-section" id="galerie">
       <div class="section">
+        <div class="section-index reveal">04</div>
+
         <div class="section-heading split reveal">
           <div>
-            <p class="eyebrow">APERÇU DE LA VILLE</p>
-            <h2>UNE IDENTITÉ VISUELLE FORTE</h2>
+            <p class="eyebrow">APERÇU DU PROJET</p>
+            <h2>L'IDENTITÉ DU<br>GRAND MONTRÉAL</h2>
           </div>
           <p>
-            Cette galerie accueillera progressivement les captures officielles du serveur : services, commerces, véhicules et événements.
+            Les captures officielles du serveur remplaceront progressivement les compositions actuelles pour présenter la vraie ville, ses véhicules et ses institutions.
           </p>
         </div>
 
-        <div class="gallery-grid">
-          <figure class="gallery-main reveal">
+        <div class="editorial-gallery">
+          <figure class="gallery-large reveal">
             <img src="assets/hero.jpg" alt="Vue du Grand Montréal">
-            <figcaption>Grand Montréal RP Remastered</figcaption>
+            <figcaption>
+              <span>01</span>
+              <strong>GRAND MONTRÉAL RP REMASTERED</strong>
+            </figcaption>
           </figure>
-          <figure class="gallery-small gallery-red reveal">
-            <div></div>
-            <figcaption>Services publics</figcaption>
+          <figure class="gallery-card gallery-card-red reveal">
+            <div class="gallery-art"></div>
+            <figcaption>
+              <span>02</span>
+              <strong>SERVICES PUBLICS</strong>
+            </figcaption>
           </figure>
-          <figure class="gallery-small gallery-blue reveal">
-            <div></div>
-            <figcaption>Vie urbaine</figcaption>
+          <figure class="gallery-card gallery-card-blue reveal">
+            <div class="gallery-art"></div>
+            <figcaption>
+              <span>03</span>
+              <strong>VIE URBAINE</strong>
+            </figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <section class="rules-cta">
+    <section class="rules-banner">
       <div class="rules-bg"></div>
       <div class="rules-content reveal">
-        <p class="eyebrow">UN CADRE POUR PROTÉGER LE JEU</p>
-        <h2>DES RÈGLES CLAIRES.<br>DES DÉCISIONS COHÉRENTES.</h2>
+        <p class="eyebrow">LE CADRE COMMUN</p>
+        <h2>DES RÈGLES QUI<br>PROTÈGENT LE JEU</h2>
         <p>
-          Le règlement existe pour garantir une expérience solide, équitable et durable à ceux qui viennent réellement jouer un rôle.
+          La cohérence ne vient pas d'une liste infinie de sanctions. Elle vient d'attentes comprises, de décisions constantes et d'une communauté qui respecte le jeu des autres.
         </p>
-        <a class="button button-primary" href="#">Consulter les règlements</a>
+        <a class="button button-primary" href="#">Consulter les règlements <b>↗</b></a>
       </div>
     </section>
 
     <section class="section faq" id="faq">
+      <div class="section-index reveal">05</div>
+
       <div class="section-heading reveal">
-        <p class="eyebrow">AVANT DE NOUS REJOINDRE</p>
-        <h2>QUESTIONS FRÉQUENTES</h2>
+        <p class="eyebrow">QUESTIONS FRÉQUENTES</p>
+        <h2>AVANT DE PRENDRE<br>VOTRE PLACE</h2>
       </div>
 
       <div class="faq-list">
         <details class="reveal">
           <summary>Le serveur est-il whitelist?</summary>
-          <p>Oui. L'accès est encadré pour préserver la qualité du rôleplay et la cohérence de la communauté.</p>
+          <p>Oui. L'accès est encadré pour préserver la cohérence de la communauté et la qualité des scènes.</p>
         </details>
         <details class="reveal">
           <summary>Faut-il être Québécois?</summary>
-          <p>Non. L'univers est québécois, mais les joueurs francophones qui respectent le projet peuvent y trouver leur place.</p>
+          <p>Non. L'identité du serveur est québécoise, mais les joueurs francophones qui respectent le projet sont les bienvenus.</p>
         </details>
         <details class="reveal">
-          <summary>Comment rejoindre?</summary>
-          <p>Rejoins le Discord, consulte les documents essentiels, puis suis le processus d'accès présenté par l'équipe.</p>
+          <summary>Comment rejoindre le serveur?</summary>
+          <p>Rejoins le Discord, consulte les documents essentiels et suis le processus d'accès présenté par l'équipe.</p>
         </details>
         <details class="reveal">
-          <summary>Peut-on gérer une entreprise?</summary>
-          <p>Oui, selon les entreprises disponibles et les critères de gestion, d'activité et de sérieux établis.</p>
+          <summary>Peut-on reprendre une entreprise?</summary>
+          <p>Oui, selon les disponibilités et les critères de gestion, d'activité et de sérieux établis.</p>
         </details>
       </div>
     </section>
@@ -331,10 +354,10 @@
       <div class="final-bg"></div>
       <div class="final-content reveal">
         <img src="assets/logo.png" alt="Grand Montréal RP">
-        <p class="eyebrow">VOTRE HISTOIRE COMMENCE ICI</p>
-        <h2>PRENEZ VOTRE PLACE DANS LA VILLE</h2>
+        <p class="eyebrow">UNE VILLE. UNE HISTOIRE. VOTRE RÔLE.</p>
+        <h2>LE GRAND MONTRÉAL<br>VOUS ATTEND</h2>
         <div class="hero-actions">
-          <a class="button button-primary" href="https://cfx.re/join/k7oxyd" target="_blank" rel="noopener">Lancer FiveM</a>
+          <a class="button button-primary" href="https://cfx.re/join/k7oxyd" target="_blank" rel="noopener">Lancer FiveM <b>↗</b></a>
           <a class="button button-secondary" href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">Rejoindre Discord</a>
         </div>
       </div>
