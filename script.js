@@ -63,12 +63,12 @@ document.querySelector("#year").textContent = new Date().getFullYear();
 
 /*
   Compteur FiveM :
-  remplace TONCODE par ton code cfx.re, puis décommente ce bloc.
+  remplace k7oxyd par ton code cfx.re, puis décommente ce bloc.
   Attention : l'API publique peut parfois refuser les requêtes selon sa configuration.
 
 async function loadPlayerCount() {
   try {
-    const response = await fetch("https://servers-frontend.fivem.net/api/servers/single/TONCODE");
+    const response = await fetch("https://servers-frontend.fivem.net/api/servers/single/k7oxyd");
     if (!response.ok) throw new Error("Serveur introuvable");
     const data = await response.json();
     document.querySelector("#player-count").textContent =
