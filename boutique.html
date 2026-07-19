@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Boutique Grand Montréal RP — imports et avantages VIP.">
+  <meta name="theme-color" content="#07090d">
+  <title>Boutique — Grand Montréal RP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="boutique.css">
+</head>
+
+<body class="shop-page">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header scrolled">
+    <a class="brand" href="index.html#accueil" aria-label="Grand Montréal RP">
+      <img src="assets/logo.png" alt="Logo Grand Montréal RP">
+      <div>
+        <strong>GRAND MONTRÉAL <span>RP</span></strong>
+        <small>REMASTERED</small>
+      </div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#accueil">Accueil</a>
+      <a class="active" href="boutique.html">Boutique</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#economie">Économie</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="header-link" href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">Discord</a>
+      <a class="header-button" href="https://cfx.re/join/k7oxyd" target="_blank" rel="noopener">Jouer</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="shop-hero">
+      <div class="shop-hero-bg"></div>
+      <div class="shop-hero-content reveal">
+        <p class="eyebrow">BOUTIQUE OFFICIELLE</p>
+        <h1>IMPORTS & VIP</h1>
+        <p>
+          Soutenez Grand Montréal RP tout en accédant à des avantages pensés pour enrichir votre expérience sans créer de pay-to-win.
+        </p>
+        <div class="shop-switch" role="tablist" aria-label="Catégories de la boutique">
+          <button class="shop-tab active" data-target="imports" type="button">Véhicules importés</button>
+          <button class="shop-tab" data-target="vip" type="button">Formules VIP</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop-section active" id="imports">
+      <div class="shop-heading reveal">
+        <div>
+          <p class="eyebrow">CATALOGUE IMPORT</p>
+          <h2>VÉHICULES D'EXCEPTION</h2>
+        </div>
+        <p>
+          Les véhicules affichés ci-dessous servent de structure. Remplace les noms, prix et images selon ton véritable catalogue.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card reveal">
+          <div class="product-visual import-one">
+            <span class="product-badge">IMPORT</span>
+          </div>
+          <div class="product-body">
+            <p>SPORTIVE</p>
+            <h3>Modèle Horizon</h3>
+            <span>Performance équilibrée et design exclusif pour les collectionneurs.</span>
+            <div class="product-footer">
+              <strong>À déterminer</strong>
+              <a href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">Commander</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-visual import-two">
+            <span class="product-badge">IMPORT</span>
+          </div>
+          <div class="product-body">
+            <p>VUS</p>
+            <h3>Modèle Métropole</h3>
+            <span>Un véhicule polyvalent pour la ville, les entreprises et les longues routes.</span>
+            <div class="product-footer">
+              <strong>À déterminer</strong>
+              <a href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">Commander</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-visual import-three">
+            <span class="product-badge">IMPORT</span>
+          </div>
+          <div class="product-body">
+            <p>PRESTIGE</p>
+            <h3>Modèle Signature</h3>
+            <span>Une finition haut de gamme destinée aux joueurs qui veulent se démarquer.</span>
+            <div class="product-footer">
+              <strong>À déterminer</strong>
+              <a href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">Commander</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="shop-notice reveal">
+        <strong>Important</strong>
+        <p>
+          Les achats ne garantissent aucun avantage illégitime en jeu. Les véhicules et récompenses restent soumis aux règles du serveur et peuvent être ajustés pour protéger l'équilibre économique.
+        </p>
+      </div>
+    </section>
+
+    <section class="shop-section" id="vip">
+      <div class="shop-heading reveal">
+        <div>
+          <p class="eyebrow">FORMULES VIP</p>
+          <h2>SOUTENIR LE PROJET</h2>
+        </div>
+        <p>
+          Trois niveaux simples. Les avantages présentés sont des exemples et pourront être remplacés par tes avantages officiels.
+        </p>
+      </div>
+
+      <div class="vip-grid">
+        <article class="vip-card reveal">
+          <div class="vip-level">01</div>
+          <p>VIP BRONZE</p>
+          <h3>Citoyen</h3>
+          <div class="vip-price"><strong>10 $</strong><span>/ mois</span></div>
+          <ul>
+            <li>File prioritaire légère</li>
+            <li>Badge Discord exclusif</li>
+            <li>Bonus mensuel cosmétique</li>
+            <li>Points citoyens mensuels</li>
+          </ul>
+          <a class="button button-secondary" href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">Choisir Bronze</a>
+        </article>
+
+        <article class="vip-card featured reveal">
+          <div class="vip-ribbon">POPULAIRE</div>
+          <div class="vip-level">02</div>
+          <p>VIP ARGENT</p>
+          <h3>Métropolitain</h3>
+          <div class="vip-price"><strong>20 $</strong><span>/ mois</span></div>
+          <ul>
+            <li>Priorité de connexion améliorée</li>
+            <li>Avantages Bronze inclus</li>
+            <li>Points citoyens supplémentaires</li>
+            <li>Accès à des cosmétiques exclusifs</li>
+          </ul>
+          <a class="button button-primary" href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">Choisir Argent</a>
+        </article>
+
+        <article class="vip-card reveal">
+          <div class="vip-level">03</div>
+          <p>VIP OR</p>
+          <h3>Prestige</h3>
+          <div class="vip-price"><strong>35 $</strong><span>/ mois</span></div>
+          <ul>
+            <li>Priorité de connexion maximale</li>
+            <li>Avantages Argent inclus</li>
+            <li>Récompenses mensuelles premium</li>
+            <li>Accès anticipé à certains contenus</li>
+          </ul>
+          <a class="button button-secondary" href="https://discord.gg/GWDxdWCDM" target="_blank" rel="noopener">Choisir Or</a>
+        </article>
+      </div>
+
+      <div class="shop-notice reveal">
+        <strong>Politique anti pay-to-win</strong>
+        <p>
+          Les niveaux VIP doivent soutenir le serveur sans donner un avantage injuste en rôleplay, en économie ou lors des scènes compétitives.
+        </p>
+      </div>
+    </section>
+
+    <section class="shop-faq">
+      <div class="shop-faq-inner">
+        <div class="shop-heading reveal">
+          <div>
+            <p class="eyebrow">AVANT L'ACHAT</p>
+            <h2>QUESTIONS BOUTIQUE</h2>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <details class="reveal">
+            <summary>Comment recevoir mon achat?</summary>
+            <p>La commande peut être traitée par ticket Discord jusqu'à l'intégration d'un système automatisé.</p>
+          </details>
+          <details class="reveal">
+            <summary>Les achats sont-ils remboursables?</summary>
+            <p>La politique officielle devra préciser les conditions de remboursement, les délais et les exceptions applicables.</p>
+          </details>
+          <details class="reveal">
+            <summary>Un véhicule import peut-il être retiré?</summary>
+            <p>Oui, en cas d'abus, de bannissement, de problème technique ou de nécessité d'équilibrage, selon la politique du serveur.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="">
+      <div>
+        <strong>GRAND MONTRÉAL RP</strong>
+        <span>REMASTERED</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="boutique.html">Boutique</a>
+      <a href="https://discord.gg/GWDxdWCDM">Discord</a>
+    </nav>
+
+    <p>© <span id="year"></span> Grand Montréal RP. Projet FiveM indépendant.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="boutique.js"></script>
+</body>
+</html>

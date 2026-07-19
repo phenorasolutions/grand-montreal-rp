@@ -20,3 +20,14 @@
 - Nouvelle économie et nouvelle galerie.
 - Tentative de statut FiveM en direct avec repli propre si l'API refuse la requête.
 - Liens Discord et FiveM déjà intégrés.
+
+
+## Ajout boutique
+
+- Nouvelle page `boutique.html`
+- Onglet Véhicules importés
+- Onglet Formules VIP
+- Liens de commande vers Discord
+- Bouton Boutique ajouté à l'accueil et au pied de page
+
+Les noms, prix et avantages sont encore des exemples à remplacer par les informations officielles.
