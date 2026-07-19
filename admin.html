@@ -4,281 +4,173 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#07090d">
   <title>BackOffice — Grand Montréal RP</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #07090d;
-      --panel: #10151d;
-      --line: rgba(255,255,255,.1);
-      --red: #ff3042;
-      --text: #f5f7fa;
-      --muted: #9ca5b1;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      min-height: 100vh;
-      margin: 0;
-      color: var(--text);
-      background: var(--bg);
-      font-family: Arial, sans-serif;
-    }
-
-    .layout {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 240px 1fr;
-    }
-
-    aside {
-      display: flex;
-      flex-direction: column;
-      padding: 24px;
-      border-right: 1px solid var(--line);
-      background: #0b0e13;
-    }
-
-    aside strong {
-      font-size: 1.1rem;
-      text-transform: uppercase;
-    }
-
-    aside span {
-      color: var(--red);
-      font-size: .72rem;
-      letter-spacing: .12em;
-    }
-
-    nav {
-      display: grid;
-      gap: 8px;
-      margin-top: 30px;
-    }
-
-    nav a {
-      padding: 12px;
-      color: var(--muted);
-      text-decoration: none;
-      border: 1px solid transparent;
-    }
-
-    nav a.active {
-      color: white;
-      border-color: rgba(255,48,66,.25);
-      background: rgba(209,31,47,.08);
-    }
-
-    .sidebar-bottom {
-      margin-top: auto;
-    }
-
-    #staffName {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    #staffRole {
-      display: block;
-      margin-bottom: 14px;
-      color: var(--muted);
-    }
-
-    #logoutButton {
-      width: 100%;
-      min-height: 42px;
-      color: white;
-      border: 1px solid var(--line);
-      background: transparent;
-      cursor: pointer;
-    }
-
-    main {
-      padding: 42px clamp(24px, 5vw, 70px);
-    }
-
-    h1 {
-      margin: 0 0 30px;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      text-transform: uppercase;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-
-    .card {
-      min-height: 160px;
-      padding: 24px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-    }
-
-    .card span {
-      color: var(--muted);
-      text-transform: uppercase;
-      font-size: .8rem;
-    }
-
-    .card strong {
-      display: block;
-      margin-top: 42px;
-      font-size: 3rem;
-    }
-
-    .notice {
-      margin-top: 18px;
-      padding: 24px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .hidden { display: none; }
-
-    @media (max-width: 850px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      aside {
-        min-height: auto;
-      }
-
-      .sidebar-bottom {
-        margin-top: 24px;
-      }
-
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-  <div class="layout hidden" id="dashboard">
-    <aside>
-      <strong>Grand Montréal RP</strong>
-      <span>BackOffice</span>
+  <div class="app hidden" id="dashboard">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">GM</div>
+        <div>
+          <strong>GRAND MONTRÉAL RP</strong>
+          <span>BACKOFFICE</span>
+        </div>
+      </div>
 
-      <nav>
-        <a class="active" href="admin.html">Dashboard</a>
-        <a href="#" aria-disabled="true">Marketplace — prochain sprint</a>
+      <nav class="sidebar-nav">
+        <a class="active" href="admin.html">
+          <span class="nav-icon">◫</span>
+          Dashboard
+        </a>
+        <a href="#" aria-disabled="true">
+          <span class="nav-icon">◆</span>
+          Marketplace
+          <small>Bientôt</small>
+        </a>
+        <a href="#" aria-disabled="true">
+          <span class="nav-icon">●</span>
+          Utilisateurs
+          <small>Bientôt</small>
+        </a>
+        <a href="#" aria-disabled="true">
+          <span class="nav-icon">≡</span>
+          Logs
+          <small>Bientôt</small>
+        </a>
       </nav>
 
-      <div class="sidebar-bottom">
-        <strong id="staffName">—</strong>
-        <small id="staffRole">—</small>
-        <button id="logoutButton" type="button">Déconnexion</button>
+      <div class="sidebar-footer">
+        <div class="profile">
+          <div class="profile-avatar" id="profileAvatar">—</div>
+          <div>
+            <strong id="staffName">—</strong>
+            <span id="staffRole">—</span>
+          </div>
+        </div>
+
+        <button class="logout-button" id="logoutButton" type="button">
+          Déconnexion
+        </button>
       </div>
     </aside>
 
-    <main>
-      <h1>Bonjour <span id="welcomeName">—</span></h1>
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">GRAND MONTRÉAL RP CMS</p>
+          <h1>Bonjour <span id="welcomeName">—</span></h1>
+          <p class="subtitle">Voici l'état actuel de ton portail d'administration.</p>
+        </div>
 
-      <section class="grid">
-        <article class="card">
-          <span>Véhicules</span>
+        <div class="session-badge">
+          <span></span>
+          Session sécurisée
+        </div>
+      </header>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-topline">
+            <span>Véhicules</span>
+            <b>01</b>
+          </div>
           <strong id="vehicles">0</strong>
+          <small>Imports enregistrés</small>
         </article>
 
-        <article class="card">
-          <span>Maisons</span>
+        <article class="stat-card">
+          <div class="stat-topline">
+            <span>Maisons</span>
+            <b>02</b>
+          </div>
           <strong id="houses">0</strong>
+          <small>Propriétés enregistrées</small>
         </article>
 
-        <article class="card">
-          <span>VIP</span>
+        <article class="stat-card">
+          <div class="stat-topline">
+            <span>VIP</span>
+            <b>03</b>
+          </div>
           <strong id="vip">0</strong>
+          <small>Formules disponibles</small>
         </article>
 
-        <article class="card">
-          <span>Utilisateurs</span>
+        <article class="stat-card">
+          <div class="stat-topline">
+            <span>Staff</span>
+            <b>04</b>
+          </div>
           <strong id="users">0</strong>
+          <small>Comptes actifs</small>
         </article>
       </section>
 
-      <div class="notice">
-        La connexion, la session et la déconnexion sont maintenant actives.
-        Le prochain sprint rendra le Marketplace administrable.
-      </div>
+      <section class="dashboard-grid">
+        <article class="panel activity-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">HISTORIQUE</p>
+              <h2>Activité récente</h2>
+            </div>
+            <span class="panel-count" id="activityCount">0 action</span>
+          </div>
+
+          <div class="activity-list" id="activityList">
+            <div class="empty-state">Chargement de l'activité…</div>
+          </div>
+        </article>
+
+        <aside class="right-column">
+          <article class="panel account-panel">
+            <div class="panel-heading compact">
+              <div>
+                <p class="eyebrow">COMPTE</p>
+                <h2>Ta session</h2>
+              </div>
+            </div>
+
+            <dl class="account-data">
+              <div>
+                <dt>Nom</dt>
+                <dd id="accountName">—</dd>
+              </div>
+              <div>
+                <dt>Rôle</dt>
+                <dd id="accountRole">—</dd>
+              </div>
+              <div>
+                <dt>Dernière connexion</dt>
+                <dd id="lastLogin">—</dd>
+              </div>
+              <div>
+                <dt>Compte créé</dt>
+                <dd id="createdAt">—</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="panel next-panel">
+            <p class="eyebrow">PROCHAIN MODULE</p>
+            <h2>Marketplace administrable</h2>
+            <p>
+              Le prochain sprint ajoutera la création, la modification, la publication et la suppression des véhicules, maisons et VIP.
+            </p>
+            <div class="progress">
+              <span style="width: 35%"></span>
+            </div>
+            <small>Fondation du CMS complétée</small>
+          </article>
+        </aside>
+      </section>
     </main>
   </div>
 
-  <script>
-    const dashboard = document.querySelector("#dashboard");
-    const logoutButton = document.querySelector("#logoutButton");
-
-    function roleName(role) {
-      const roles = {
-        100: "Fondateur",
-        80: "Administrateur",
-        60: "Marketplace",
-        40: "Communication",
-        20: "Lecture seule"
-      };
-
-      return roles[role] || `Rôle ${role}`;
-    }
-
-    async function request(path, options = {}) {
-      const response = await fetch(path, {
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        ...options
-      });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (response.status === 401) {
-        window.location.replace("login.html");
-        throw new Error("Session requise.");
-      }
-
-      if (!response.ok) {
-        throw new Error(data.error || "Une erreur est survenue.");
-      }
-
-      return data;
-    }
-
-    async function loadDashboard() {
-      const data = await request("/api/dashboard");
-
-      document.querySelector("#welcomeName").textContent = data.user.displayName;
-      document.querySelector("#staffName").textContent = data.user.displayName;
-      document.querySelector("#staffRole").textContent = roleName(data.user.role);
-
-      document.querySelector("#vehicles").textContent = data.counts.vehicles;
-      document.querySelector("#houses").textContent = data.counts.houses;
-      document.querySelector("#vip").textContent = data.counts.vip;
-      document.querySelector("#users").textContent = data.counts.users;
-
-      dashboard.classList.remove("hidden");
-    }
-
-    logoutButton.addEventListener("click", async () => {
-      logoutButton.disabled = true;
-
-      try {
-        await request("/api/auth/logout", {
-          method: "POST",
-          body: "{}"
-        });
-      } finally {
-        window.location.replace("login.html");
-      }
-    });
-
-    loadDashboard().catch((error) => {
-      console.error(error);
-    });
-  </script>
+  <script src="admin.js"></script>
 </body>
 </html>
