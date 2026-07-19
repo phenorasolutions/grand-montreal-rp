@@ -1,50 +1,53 @@
-# Grand Montréal RP V5
+# Grand Montréal RP CMS — Sprint 1
 
-## Installation
+Ce sprint ajoute une vraie authentification Cloudflare Pages Functions + D1.
 
-1. Décompresse le ZIP.
-2. Ouvre le dépôt GitHub `phenorasolutions/grand-montreal-rp`.
-3. Clique sur **Add file** → **Upload files**.
-4. Glisse `index.html`, `styles.css`, `script.js`, `README.md` et le dossier `assets`.
-5. Remplace les anciens fichiers.
-6. Clique sur **Commit changes**.
-7. Attends le déploiement Cloudflare et recharge avec **Ctrl + F5**.
+## Inclus
 
-## Nouveautés
+- Bouton Compte avec icône dans le site public et le Marketplace.
+- Création sécurisée du premier compte Fondateur.
+- Connexion par identifiant et mot de passe.
+- Mots de passe hachés avec PBKDF2-SHA-256.
+- Sessions stockées dans D1 avec cookie `HttpOnly`, `Secure`, `SameSite=Strict`.
+- Limitation simple des tentatives de connexion.
+- Journal local des connexions dans D1.
+- Dashboard protégé.
+- Déconnexion.
+- Tables Marketplace déjà préparées pour le Sprint 2.
+- `_routes.json` pour que seules les routes `/api/*` invoquent Pages Functions.
 
-- Refonte éditoriale complète.
-- Effets visuels plus haut de gamme.
-- Logo animé.
-- Curseur lumineux discret sur ordinateur.
-- Section SPGM mise en vedette.
-- Nouvelle économie et nouvelle galerie.
-- Tentative de statut FiveM en direct avec repli propre si l'API refuse la requête.
-- Liens Discord et FiveM déjà intégrés.
+## Configuration Cloudflare obligatoire
 
+Le binding D1 doit s'appeler exactement :
 
-## Ajout boutique
+`DB`
 
-- Nouvelle page `boutique.html`
-- Onglet Véhicules importés
-- Onglet Formules VIP
-- Liens de commande vers Discord
-- Bouton Boutique ajouté à l'accueil et au pied de page
+Ajoute également un secret de production :
 
-Les noms, prix et avantages sont encore des exemples à remplacer par les informations officielles.
+`CMS_SETUP_KEY`
 
+Ne place jamais sa valeur dans GitHub.
 
-## Correctif boutique
+Chemin habituel :
 
-- Correction du script principal qui plantait sur la page boutique.
-- Le contenu de la boutique apparaît maintenant correctement.
-- Navigation complète restaurée sur la page boutique.
-- Ajout d'un filet de sécurité CSS pour empêcher une page invisible.
+Workers & Pages → grand-montreal-rp → Settings → Variables and Secrets → Add
 
+Choisis **Secret**, nomme-le `CMS_SETUP_KEY`, puis colle la valeur transmise séparément.
 
-## V6 Marketplace
+Après l'ajout du secret, redéploie le projet.
 
-- Ajout d'une catégorie Maisons importées.
-- Trois fiches de propriétés d'exemple.
-- Caractéristiques : chambres, salles de bain, garage et équipements.
-- Marketplace désormais divisée en Véhicules, Maisons et VIP.
-- Navigation et teaser d'accueil mis à jour.
+## Premier démarrage
+
+1. Déploie tous les fichiers à la racine du dépôt GitHub.
+2. Attends le déploiement Cloudflare.
+3. Ouvre `/login.html`.
+4. La Function crée automatiquement les tables manquantes.
+5. Entre la clé d'installation.
+6. Crée ton compte Fondateur.
+7. Tu seras connecté automatiquement au dashboard.
+
+## Important
+
+La page `admin.html` n'est pas une barrière de sécurité à elle seule. La sécurité réelle est appliquée sur toutes les API côté serveur.
+
+Le webhook Discord sera ajouté dans un sprint distinct, après la gestion du Marketplace.

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#07090d">
+  <title>BackOffice — Grand Montréal RP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cms.css">
+</head>
+<body class="cms-body">
+  <div class="dashboard-layout hidden" id="dashboard">
+    <aside class="cms-sidebar">
+      <div class="cms-brand">
+        <img src="assets/logo.png" alt="Grand Montréal RP">
+        <div>
+          <strong>GRAND MONTRÉAL RP</strong>
+          <span>BACKOFFICE</span>
+        </div>
+      </div>
+
+      <nav class="cms-nav">
+        <a class="active" href="admin.html">Dashboard</a>
+        <a href="#" aria-disabled="true">Marketplace — Sprint 2</a>
+        <a href="#" aria-disabled="true">Utilisateurs — futur</a>
+        <a href="#" aria-disabled="true">Logs — futur</a>
+      </nav>
+
+      <div class="cms-sidebar-bottom">
+        <div class="cms-user">
+          <strong id="sidebarName">—</strong>
+          <small id="sidebarRole">—</small>
+        </div>
+        <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
+      </div>
+    </aside>
+
+    <main class="cms-main">
+      <header class="cms-topline">
+        <div>
+          <p>GRAND MONTRÉAL RP CMS</p>
+          <h1>Bonjour <span id="welcomeName">—</span></h1>
+        </div>
+        <div class="cms-status">Session sécurisée</div>
+      </header>
+
+      <section class="dashboard-grid">
+        <article class="dashboard-card">
+          <span>Véhicules</span>
+          <strong id="vehicleCount">0</strong>
+        </article>
+        <article class="dashboard-card">
+          <span>Maisons</span>
+          <strong id="houseCount">0</strong>
+        </article>
+        <article class="dashboard-card">
+          <span>VIP</span>
+          <strong id="vipCount">0</strong>
+        </article>
+        <article class="dashboard-card">
+          <span>Utilisateurs</span>
+          <strong id="userCount">0</strong>
+        </article>
+      </section>
+
+      <section class="cms-panel">
+        <h2>Sprint 1 actif</h2>
+        <p>
+          La connexion, la session, la déconnexion et la protection de l'API sont maintenant en place.
+          Le prochain sprint rendra le Marketplace administrable.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
