@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Créer le fondateur — Grand Montréal RP</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07090d;
+      --panel: #10151d;
+      --line: rgba(255,255,255,.1);
+      --red: #ff3042;
+      --text: #f5f7fa;
+      --muted: #9ca5b1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 80% 20%, rgba(209,31,47,.16), transparent 28%),
+        var(--bg);
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      width: min(520px, 100%);
+      padding: 32px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: 0 24px 70px rgba(0,0,0,.45);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2.25rem;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      margin: 0 0 26px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    form {
+      display: grid;
+      gap: 17px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: .8rem;
+      letter-spacing: .06em;
+    }
+
+    input {
+      min-height: 50px;
+      width: 100%;
+      padding: 0 14px;
+      color: white;
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      outline: none;
+      font: inherit;
+    }
+
+    input:focus {
+      border-color: rgba(255,48,66,.7);
+      box-shadow: 0 0 0 3px rgba(209,31,47,.1);
+    }
+
+    button {
+      min-height: 52px;
+      border: 0;
+      border-radius: 3px;
+      color: white;
+      background: linear-gradient(135deg, #ff3042, #d11f2f);
+      cursor: pointer;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    button:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    #message {
+      min-height: 22px;
+      margin-top: 18px;
+      color: #efb4bb;
+      line-height: 1.5;
+    }
+
+    #message.success {
+      color: #78dfa7;
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Créer le fondateur</h1>
+    <p class="intro">
+      Cette page fonctionne uniquement tant que la table des utilisateurs est vide.
+    </p>
+
+    <form id="setupForm" class="hidden">
+      <label>
+        Nom affiché
+        <input name="displayName" maxlength="60" required>
+      </label>
+
+      <label>
+        Identifiant
+        <input name="username" maxlength="40" autocomplete="username" required>
+      </label>
+
+      <label>
+        Mot de passe — 12 caractères minimum
+        <input name="password" type="password" minlength="12" autocomplete="new-password" required>
+      </label>
+
+      <button type="submit">Créer le compte fondateur</button>
+    </form>
+
+    <div id="message">Vérification de l'installation…</div>
+  </main>
+
+  <script>
+    const form = document.querySelector("#setupForm");
+    const message = document.querySelector("#message");
+
+    function setMessage(text, success = false) {
+      message.textContent = text;
+      message.classList.toggle("success", success);
+    }
+
+    async function request(path, options = {}) {
+      const response = await fetch(path, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        ...options
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || "Une erreur est survenue.");
+      }
+
+      return data;
+    }
+
+    async function initialize() {
+      try {
+        const status = await request("/api/setup");
+
+        if (!status.setupAvailable) {
+          setMessage("Le compte fondateur existe déjà. Cette page est maintenant verrouillée.");
+          return;
+        }
+
+        form.classList.remove("hidden");
+        setMessage("");
+      } catch (error) {
+        setMessage(error.message);
+      }
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const button = form.querySelector("button");
+      button.disabled = true;
+      setMessage("");
+
+      try {
+        const data = await request("/api/setup", {
+          method: "POST",
+          body: JSON.stringify({
+            displayName: form.displayName.value.trim(),
+            username: form.username.value.trim(),
+            password: form.password.value
+          })
+        });
+
+        form.classList.add("hidden");
+        setMessage(
+          `Compte créé : ${data.user.displayName} (${data.user.username}).`,
+          true
+        );
+      } catch (error) {
+        setMessage(error.message);
+        button.disabled = false;
+      }
+    });
+
+    initialize();
+  </script>
+</body>
+</html>
