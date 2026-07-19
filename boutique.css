@@ -355,3 +355,27 @@
     gap: 16px;
   }
 }
+
+
+/* Safety: boutique content must never remain invisible because of a JS error. */
+.shop-page .shop-hero-content,
+.shop-page .shop-section.active .reveal,
+.shop-page .shop-faq .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* Keep the boutique header aligned with the complete home navigation. */
+.shop-page .main-nav {
+  gap: clamp(14px, 1.8vw, 28px);
+}
+
+@media (max-width: 1180px) {
+  .shop-page .main-nav {
+    display: none;
+  }
+
+  .shop-page .main-nav.open {
+    display: flex;
+  }
+}

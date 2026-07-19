@@ -31,3 +31,11 @@
 - Bouton Boutique ajouté à l'accueil et au pied de page
 
 Les noms, prix et avantages sont encore des exemples à remplacer par les informations officielles.
+
+
+## Correctif boutique
+
+- Correction du script principal qui plantait sur la page boutique.
+- Le contenu de la boutique apparaît maintenant correctement.
+- Navigation complète restaurée sur la page boutique.
+- Ajout d'un filet de sécurité CSS pour empêcher une page invisible.

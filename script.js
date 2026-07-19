@@ -1,4 +1,4 @@
-const siteHeader = document.querySelector("#siteHeader");
+const siteHeader = document.querySelector("#siteHeader") || document.querySelector(".site-header");
 const menuToggle = document.querySelector("#menuToggle");
 const mainNav = document.querySelector("#mainNav");
 const navLinks = [...document.querySelectorAll(".main-nav a")];
@@ -6,62 +6,84 @@ const sections = [...document.querySelectorAll("main section[id]")];
 const cursorGlow = document.querySelector("#cursorGlow");
 
 function updateHeader() {
-  siteHeader.classList.toggle("scrolled", window.scrollY > 20);
+  if (!siteHeader) return;
+  siteHeader.classList.toggle("scrolled", window.scrollY > 20 || document.body.classList.contains("shop-page"));
 }
 
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
 
-menuToggle.addEventListener("click", () => {
-  const open = menuToggle.classList.toggle("active");
-  mainNav.classList.toggle("open", open);
-  document.body.classList.toggle("menu-open", open);
-  menuToggle.setAttribute("aria-expanded", String(open));
-});
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    menuToggle.classList.remove("active");
-    mainNav.classList.remove("open");
-    document.body.classList.remove("menu-open");
-    menuToggle.setAttribute("aria-expanded", "false");
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener("click", () => {
+    const open = menuToggle.classList.toggle("active");
+    mainNav.classList.toggle("open", open);
+    document.body.classList.toggle("menu-open", open);
+    menuToggle.setAttribute("aria-expanded", String(open));
   });
-});
 
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-
-    navLinks.forEach((link) => {
-      link.classList.toggle(
-        "active",
-        link.getAttribute("href") === `#${entry.target.id}`
-      );
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      mainNav.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
   });
-}, {
-  rootMargin: "-38% 0px -54% 0px",
-  threshold: 0
-});
+}
 
-sections.forEach((section) => sectionObserver.observe(section));
+if (sections.length && navLinks.length) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
 
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add("visible");
-    observer.unobserve(entry.target);
+      navLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (!href || !href.startsWith("#")) return;
+
+        link.classList.toggle(
+          "active",
+          href === `#${entry.target.id}`
+        );
+      });
+    });
+  }, {
+    rootMargin: "-38% 0px -54% 0px",
+    threshold: 0
   });
-}, { threshold: .12 });
 
-document.querySelectorAll(".reveal").forEach((element, index) => {
-  element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`;
-  revealObserver.observe(element);
-});
+  sections.forEach((section) => sectionObserver.observe(section));
+}
 
-document.querySelector("#year").textContent = new Date().getFullYear();
+const revealElements = [...document.querySelectorAll(".reveal")];
 
-if (window.matchMedia("(pointer: fine)").matches) {
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: .08 });
+
+  revealElements.forEach((element, index) => {
+    element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`;
+    revealObserver.observe(element);
+  });
+
+  // Safety fallback: nothing should remain invisible forever.
+  setTimeout(() => {
+    revealElements.forEach((element) => element.classList.add("visible"));
+  }, 1200);
+} else {
+  revealElements.forEach((element) => element.classList.add("visible"));
+}
+
+const year = document.querySelector("#year");
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
+
+if (cursorGlow && window.matchMedia("(pointer: fine)").matches) {
   window.addEventListener("mousemove", (event) => {
     cursorGlow.style.left = `${event.clientX}px`;
     cursorGlow.style.top = `${event.clientY}px`;
@@ -79,6 +101,9 @@ async function fetchServerStatus() {
   const players = document.querySelector("#playerCount");
   const capacity = document.querySelector("#serverCapacity");
   const dot = document.querySelector("#liveDot");
+
+  // These elements only exist on the home page.
+  if (!state || !name || !players || !capacity || !dot) return;
 
   const endpoints = [
     "https://frontend.cfx-services.net/api/servers/single/k7oxyd",
@@ -101,7 +126,6 @@ async function fetchServerStatus() {
 
       const payload = await response.json();
       const data = payload?.Data;
-
       if (!data) continue;
 
       const currentPlayers =
@@ -127,7 +151,7 @@ async function fetchServerStatus() {
       dot.classList.add("online");
       return;
     } catch (error) {
-      // Essaie l'endpoint suivant.
+      // Try the next endpoint.
     }
   }
 
