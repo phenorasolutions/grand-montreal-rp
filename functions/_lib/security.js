@@ -14,7 +14,7 @@ export function randomBytes(length = 16) {
   return bytes;
 }
 
-export async function hashPassword(password, iterations = 310000) {
+export async function hashPassword(password, iterations = 100000) {
   const salt = randomBytes(16);
 
   const keyMaterial = await crypto.subtle.importKey(
