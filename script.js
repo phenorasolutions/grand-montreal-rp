@@ -1,48 +1,49 @@
-const header = document.querySelector(".site-header");
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".main-nav");
-const navLinks = [...document.querySelectorAll(".main-nav a")];
+const topbar = document.querySelector("#topbar");
+const menuButton = document.querySelector("#menuButton");
+const nav = document.querySelector("#mainNav");
+const navLinks = [...document.querySelectorAll(".nav a")];
+const sections = [...document.querySelectorAll("main section[id]")];
 
-function setHeaderState() {
-  header.classList.toggle("scrolled", window.scrollY > 20);
+function updateHeader() {
+  topbar.classList.toggle("scrolled", window.scrollY > 20);
 }
 
-setHeaderState();
-window.addEventListener("scroll", setHeaderState, { passive: true });
+updateHeader();
+window.addEventListener("scroll", updateHeader, { passive: true });
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = menuToggle.classList.toggle("active");
-  nav.classList.toggle("open", isOpen);
-  document.body.classList.toggle("menu-open", isOpen);
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
+menuButton.addEventListener("click", () => {
+  const open = menuButton.classList.toggle("active");
+  nav.classList.toggle("open", open);
+  document.body.classList.toggle("menu-open", open);
+  menuButton.setAttribute("aria-expanded", String(open));
 });
 
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    menuToggle.classList.remove("active");
+    menuButton.classList.remove("active");
     nav.classList.remove("open");
     document.body.classList.remove("menu-open");
-    menuToggle.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-expanded", "false");
   });
 });
 
-const sections = [...document.querySelectorAll("main section[id]")];
-
-const sectionObserver = new IntersectionObserver((entries) => {
+const navObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
 
     navLinks.forEach((link) => {
-      const target = link.getAttribute("href");
-      link.classList.toggle("active", target === `#${entry.target.id}`);
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === `#${entry.target.id}`
+      );
     });
   });
 }, {
-  rootMargin: "-35% 0px -55% 0px",
+  rootMargin: "-38% 0px -54% 0px",
   threshold: 0
 });
 
-sections.forEach((section) => sectionObserver.observe(section));
+sections.forEach((section) => navObserver.observe(section));
 
 const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
@@ -51,32 +52,12 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
     observer.unobserve(entry.target);
   });
 }, {
-  threshold: 0.12
+  threshold: .12
 });
 
 document.querySelectorAll(".reveal").forEach((element, index) => {
-  element.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
+  element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`;
   revealObserver.observe(element);
 });
 
 document.querySelector("#year").textContent = new Date().getFullYear();
-
-/*
-  Compteur FiveM :
-  remplace k7oxyd par ton code cfx.re, puis décommente ce bloc.
-  Attention : l'API publique peut parfois refuser les requêtes selon sa configuration.
-
-async function loadPlayerCount() {
-  try {
-    const response = await fetch("https://servers-frontend.fivem.net/api/servers/single/k7oxyd");
-    if (!response.ok) throw new Error("Serveur introuvable");
-    const data = await response.json();
-    document.querySelector("#player-count").textContent =
-      `${data.Data.clients}/${data.Data.sv_maxclients}`;
-  } catch (error) {
-    document.querySelector("#player-count").textContent = "Hors ligne";
-  }
-}
-
-loadPlayerCount();
-*/
