@@ -1,33 +1,33 @@
-const topbar = document.querySelector("#topbar");
-const menuButton = document.querySelector("#menuButton");
-const nav = document.querySelector("#mainNav");
-const navLinks = [...document.querySelectorAll(".nav a")];
+const siteHeader = document.querySelector("#siteHeader");
+const menuToggle = document.querySelector("#menuToggle");
+const mainNav = document.querySelector("#mainNav");
+const navLinks = [...document.querySelectorAll(".main-nav a")];
 const sections = [...document.querySelectorAll("main section[id]")];
 
 function updateHeader() {
-  topbar.classList.toggle("scrolled", window.scrollY > 20);
+  siteHeader.classList.toggle("scrolled", window.scrollY > 20);
 }
 
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
 
-menuButton.addEventListener("click", () => {
-  const open = menuButton.classList.toggle("active");
-  nav.classList.toggle("open", open);
-  document.body.classList.toggle("menu-open", open);
-  menuButton.setAttribute("aria-expanded", String(open));
+menuToggle.addEventListener("click", () => {
+  const isOpen = menuToggle.classList.toggle("active");
+  mainNav.classList.toggle("open", isOpen);
+  document.body.classList.toggle("menu-open", isOpen);
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    menuButton.classList.remove("active");
-    nav.classList.remove("open");
+    menuToggle.classList.remove("active");
+    mainNav.classList.remove("open");
     document.body.classList.remove("menu-open");
-    menuButton.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-expanded", "false");
   });
 });
 
-const navObserver = new IntersectionObserver((entries) => {
+const activeSectionObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
 
@@ -43,7 +43,7 @@ const navObserver = new IntersectionObserver((entries) => {
   threshold: 0
 });
 
-sections.forEach((section) => navObserver.observe(section));
+sections.forEach((section) => activeSectionObserver.observe(section));
 
 const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
