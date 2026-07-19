@@ -25,7 +25,7 @@ shopTabs.forEach((tab) => {
 });
 
 const requestedTab = window.location.hash.replace("#", "");
-if (requestedTab === "vip" || requestedTab === "imports") {
+if (requestedTab === "vip" || requestedTab === "imports" || requestedTab === "houses") {
   const tab = document.querySelector(`[data-target="${requestedTab}"]`);
   if (tab) tab.click();
 }

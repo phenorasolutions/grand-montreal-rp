@@ -39,3 +39,12 @@ Les noms, prix et avantages sont encore des exemples à remplacer par les inform
 - Le contenu de la boutique apparaît maintenant correctement.
 - Navigation complète restaurée sur la page boutique.
 - Ajout d'un filet de sécurité CSS pour empêcher une page invisible.
+
+
+## V6 Marketplace
+
+- Ajout d'une catégorie Maisons importées.
+- Trois fiches de propriétés d'exemple.
+- Caractéristiques : chambres, salles de bain, garage et équipements.
+- Marketplace désormais divisée en Véhicules, Maisons et VIP.
+- Navigation et teaser d'accueil mis à jour.
