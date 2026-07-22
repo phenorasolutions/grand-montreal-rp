@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
   <link rel="stylesheet" href="marketplace-admin.css">
+  <link rel="stylesheet" href="media-picker.css">
 </head>
 <body>
   <div class="app hidden" id="marketplaceApp">
@@ -25,7 +26,6 @@
         <a class="active" href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
         <a href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
         <a href="#" aria-disabled="true"><span class="nav-icon">●</span>Utilisateurs<small>Bientôt</small></a>
-        <a href="#" aria-disabled="true"><span class="nav-icon">≡</span>Logs<small>Bientôt</small></a>
       </nav>
 
       <div class="sidebar-footer">
@@ -83,7 +83,21 @@
         <label>Nom<input name="name" maxlength="120" required></label>
         <label>Prix affiché<input name="priceLabel" maxlength="80" placeholder="Ex. Sur demande"></label>
         <label>Badge<input name="badge" maxlength="40" placeholder="Ex. Nouveau"></label>
-        <label class="full">URL de l'image<input name="imageUrl" type="url" maxlength="1000" placeholder="https://..."></label>
+
+        <div class="image-field full">
+          <span class="image-field-label">Image principale</span>
+          <input name="imageUrl" type="hidden">
+
+          <div class="selected-media" id="selectedMedia">
+            <div class="selected-media-empty">Aucune image sélectionnée</div>
+          </div>
+
+          <div class="selected-media-actions">
+            <button class="secondary-action" type="button" id="chooseMediaButton">Choisir dans la médiathèque</button>
+            <button class="secondary-action" type="button" id="clearMediaButton">Retirer l'image</button>
+          </div>
+        </div>
+
         <label class="full">Description<textarea name="description" rows="6" maxlength="5000"></textarea></label>
         <label class="checkbox-row full"><input name="published" type="checkbox" checked> Publier dans le catalogue public</label>
       </div>
@@ -95,6 +109,26 @@
         <button class="primary-action" id="saveButton" type="submit">Enregistrer</button>
       </footer>
     </form>
+  </dialog>
+
+  <dialog class="media-picker-dialog" id="mediaPickerDialog">
+    <div class="media-picker-shell">
+      <header class="media-picker-header">
+        <div>
+          <p class="eyebrow">MÉDIATHÈQUE</p>
+          <h2>Choisir une image</h2>
+        </div>
+        <button class="dialog-close" type="button" id="closeMediaPicker" aria-label="Fermer">×</button>
+      </header>
+
+      <div class="media-picker-toolbar">
+        <input id="mediaPickerSearch" type="search" placeholder="Rechercher une image…">
+      </div>
+
+      <section class="media-picker-grid" id="mediaPickerGrid">
+        <div class="empty-state">Chargement de la médiathèque…</div>
+      </section>
+    </div>
   </dialog>
 
   <script src="marketplace-admin.js"></script>
