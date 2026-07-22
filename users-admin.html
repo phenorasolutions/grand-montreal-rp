@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Utilisateurs — Grand Montréal RP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="administration.css">
+</head>
+<body>
+<div class="app hidden" id="usersApp">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">GM</div><div><strong>GRAND MONTRÉAL RP</strong><span>BACKOFFICE</span></div></div>
+    <nav class="sidebar-nav">
+      <a href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
+      <a href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
+      <a href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
+      <a class="active" href="users-admin.html"><span class="nav-icon">●</span>Utilisateurs</a>
+      <a href="logs-admin.html"><span class="nav-icon">≡</span>Logs</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="profile"><div class="profile-avatar" id="profileAvatar">—</div><div><strong id="staffName">—</strong><span id="staffRole">—</span></div></div>
+      <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MILESTONE 2</p>
+        <h1>Utilisateurs</h1>
+        <p class="subtitle">Crée, modifie et désactive les comptes du staff.</p>
+      </div>
+      <button class="primary-action" id="newUserButton" type="button">+ Ajouter</button>
+    </header>
+
+    <section class="admin-toolbar">
+      <input id="userSearch" type="search" placeholder="Rechercher un membre…">
+      <select id="roleFilter">
+        <option value="all">Tous les rôles</option>
+        <option value="100">Fondateur</option>
+        <option value="80">Administrateur</option>
+        <option value="60">Marketplace</option>
+        <option value="40">Communication</option>
+        <option value="20">Lecture seule</option>
+      </select>
+    </section>
+
+    <section class="admin-table" id="usersTable">
+      <div class="empty-state">Chargement…</div>
+    </section>
+  </main>
+</div>
+
+<dialog class="admin-dialog" id="userDialog">
+  <form id="userForm">
+    <header class="dialog-header">
+      <div><p class="eyebrow">COMPTE STAFF</p><h2 id="userDialogTitle">Ajouter un utilisateur</h2></div>
+      <button type="button" class="dialog-close" id="closeUserDialog">×</button>
+    </header>
+
+    <input type="hidden" name="id">
+
+    <div class="form-grid">
+      <label>Nom affiché<input name="displayName" maxlength="60" required></label>
+      <label>Identifiant<input name="username" maxlength="40" required></label>
+      <label>Rôle
+        <select name="role" required>
+          <option value="20">Lecture seule</option>
+          <option value="40">Communication</option>
+          <option value="60">Gestionnaire Marketplace</option>
+          <option value="80">Administrateur</option>
+          <option value="100">Fondateur</option>
+        </select>
+      </label>
+      <label id="passwordField">Mot de passe<input name="password" type="password" minlength="12"></label>
+      <label id="newPasswordField" class="hidden">Nouveau mot de passe<input name="newPassword" type="password" minlength="12"></label>
+      <label class="check full"><input name="active" type="checkbox" checked> Compte actif</label>
+    </div>
+
+    <div class="form-message" id="userFormMessage"></div>
+    <footer class="dialog-actions">
+      <button type="button" class="secondary-action" id="cancelUserButton">Annuler</button>
+      <button type="submit" class="primary-action" id="saveUserButton">Enregistrer</button>
+    </footer>
+  </form>
+</dialog>
+
+<script src="users-admin.js"></script>
+</body>
+</html>

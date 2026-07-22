@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Logs — Grand Montréal RP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="administration.css">
+</head>
+<body>
+<div class="app hidden" id="logsApp">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">GM</div><div><strong>GRAND MONTRÉAL RP</strong><span>BACKOFFICE</span></div></div>
+    <nav class="sidebar-nav">
+      <a href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
+      <a href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
+      <a href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
+      <a href="users-admin.html"><span class="nav-icon">●</span>Utilisateurs</a>
+      <a class="active" href="logs-admin.html"><span class="nav-icon">≡</span>Logs</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="profile"><div class="profile-avatar" id="profileAvatar">—</div><div><strong id="staffName">—</strong><span id="staffRole">—</span></div></div>
+      <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">AUDIT</p>
+        <h1>Journal d'activité</h1>
+        <p class="subtitle">Suis les actions effectuées dans le CMS.</p>
+      </div>
+    </header>
+
+    <section class="admin-toolbar">
+      <select id="categoryFilter"><option value="">Toutes les catégories</option></select>
+      <input id="logSearch" type="search" placeholder="Rechercher une action ou un membre…">
+    </section>
+
+    <section class="log-list" id="logsList">
+      <div class="empty-state">Chargement…</div>
+    </section>
+  </main>
+</div>
+
+<script src="logs-admin.js"></script>
+</body>
+</html>

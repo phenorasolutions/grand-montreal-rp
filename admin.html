@@ -4,177 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#07090d">
   <title>BackOffice — Grand Montréal RP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="administration.css">
 </head>
 <body>
-  <div class="app hidden" id="dashboard">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-mark">GM</div>
-        <div>
-          <strong>GRAND MONTRÉAL RP</strong>
-          <span>BACKOFFICE</span>
-        </div>
+<div class="app hidden" id="dashboard">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">GM</div><div><strong>GRAND MONTRÉAL RP</strong><span>BACKOFFICE</span></div></div>
+    <nav class="sidebar-nav">
+      <a class="active" href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
+      <a href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
+      <a href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
+      <a href="users-admin.html"><span class="nav-icon">●</span>Utilisateurs</a>
+      <a href="logs-admin.html"><span class="nav-icon">≡</span>Logs</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="profile"><div class="profile-avatar" id="profileAvatar">—</div><div><strong id="staffName">—</strong><span id="staffRole">—</span></div></div>
+      <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MILESTONE 2</p>
+        <h1>Bonjour <span id="welcomeName">—</span></h1>
+        <p class="subtitle">Vue d'ensemble du contenu et de l'activité du CMS.</p>
       </div>
+      <div class="session-badge"><span></span>Session sécurisée</div>
+    </header>
 
-      <nav class="sidebar-nav">
-        <a class="active" href="admin.html">
-          <span class="nav-icon">◫</span>
-          Dashboard
-        </a>
-        <a href="marketplace-admin.html">
-  <span class="nav-icon">◆</span>
-  Marketplace
-</a>
-        <a href="media-admin.html">
-  <span class="nav-icon">▣</span>
-  Médias
-</a>
+    <section class="stats-grid">
+      <article class="stat-card"><div class="stat-topline"><span>Véhicules</span><b>01</b></div><strong id="vehicles">0</strong><small>Imports enregistrés</small></article>
+      <article class="stat-card"><div class="stat-topline"><span>Maisons</span><b>02</b></div><strong id="houses">0</strong><small>Propriétés enregistrées</small></article>
+      <article class="stat-card"><div class="stat-topline"><span>VIP</span><b>03</b></div><strong id="vip">0</strong><small>Formules disponibles</small></article>
+      <article class="stat-card"><div class="stat-topline"><span>Staff</span><b>04</b></div><strong id="users">0</strong><small>Comptes actifs</small></article>
+    </section>
 
-        <a href="#" aria-disabled="true">
-          <span class="nav-icon">●</span>
-          Utilisateurs
-          <small>Bientôt</small>
-        </a>
-        <a href="#" aria-disabled="true">
-          <span class="nav-icon">≡</span>
-          Logs
-          <small>Bientôt</small>
-        </a>
-      </nav>
+    <section class="dashboard-secondary-grid">
+      <article class="mini-stat"><span>Publié</span><strong id="published">0</strong></article>
+      <article class="mini-stat"><span>Brouillons</span><strong id="drafts">0</strong></article>
+      <article class="mini-stat"><span>Vedettes</span><strong id="featured">0</strong></article>
+      <article class="mini-stat"><span>Médias</span><strong id="media">0</strong></article>
+    </section>
 
-      <div class="sidebar-footer">
-        <div class="profile">
-          <div class="profile-avatar" id="profileAvatar">—</div>
-          <div>
-            <strong id="staffName">—</strong>
-            <span id="staffRole">—</span>
-          </div>
+    <section class="dashboard-grid">
+      <article class="panel activity-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">HISTORIQUE</p><h2>Activité récente</h2></div>
+          <span class="panel-count" id="activityCount">0 action</span>
         </div>
+        <div class="activity-list" id="activityList"><div class="empty-state">Chargement…</div></div>
+      </article>
 
-        <button class="logout-button" id="logoutButton" type="button">
-          Déconnexion
-        </button>
-      </div>
-    </aside>
-
-    <main class="main">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">GRAND MONTRÉAL RP CMS</p>
-          <h1>Bonjour <span id="welcomeName">—</span></h1>
-          <p class="subtitle">Voici l'état actuel de ton portail d'administration.</p>
-        </div>
-
-        <div class="session-badge">
-          <span></span>
-          Session sécurisée
-        </div>
-      </header>
-
-      <section class="stats-grid">
-        <article class="stat-card">
-          <div class="stat-topline">
-            <span>Véhicules</span>
-            <b>01</b>
-          </div>
-          <strong id="vehicles">0</strong>
-          <small>Imports enregistrés</small>
+      <aside class="right-column">
+        <article class="panel account-panel">
+          <div class="panel-heading compact"><div><p class="eyebrow">COMPTE</p><h2>Ta session</h2></div></div>
+          <dl class="account-data">
+            <div><dt>Nom</dt><dd id="accountName">—</dd></div>
+            <div><dt>Rôle</dt><dd id="accountRole">—</dd></div>
+            <div><dt>Dernière connexion</dt><dd id="lastLogin">—</dd></div>
+            <div><dt>Compte créé</dt><dd id="createdAt">—</dd></div>
+          </dl>
         </article>
-
-        <article class="stat-card">
-          <div class="stat-topline">
-            <span>Maisons</span>
-            <b>02</b>
-          </div>
-          <strong id="houses">0</strong>
-          <small>Propriétés enregistrées</small>
-        </article>
-
-        <article class="stat-card">
-          <div class="stat-topline">
-            <span>VIP</span>
-            <b>03</b>
-          </div>
-          <strong id="vip">0</strong>
-          <small>Formules disponibles</small>
-        </article>
-
-        <article class="stat-card">
-          <div class="stat-topline">
-            <span>Staff</span>
-            <b>04</b>
-          </div>
-          <strong id="users">0</strong>
-          <small>Comptes actifs</small>
-        </article>
-      </section>
-
-      <section class="dashboard-grid">
-        <article class="panel activity-panel">
-          <div class="panel-heading">
-            <div>
-              <p class="eyebrow">HISTORIQUE</p>
-              <h2>Activité récente</h2>
-            </div>
-            <span class="panel-count" id="activityCount">0 action</span>
-          </div>
-
-          <div class="activity-list" id="activityList">
-            <div class="empty-state">Chargement de l'activité…</div>
-          </div>
-        </article>
-
-        <aside class="right-column">
-          <article class="panel account-panel">
-            <div class="panel-heading compact">
-              <div>
-                <p class="eyebrow">COMPTE</p>
-                <h2>Ta session</h2>
-              </div>
-            </div>
-
-            <dl class="account-data">
-              <div>
-                <dt>Nom</dt>
-                <dd id="accountName">—</dd>
-              </div>
-              <div>
-                <dt>Rôle</dt>
-                <dd id="accountRole">—</dd>
-              </div>
-              <div>
-                <dt>Dernière connexion</dt>
-                <dd id="lastLogin">—</dd>
-              </div>
-              <div>
-                <dt>Compte créé</dt>
-                <dd id="createdAt">—</dd>
-              </div>
-            </dl>
-          </article>
-
-          <article class="panel next-panel">
-            <p class="eyebrow">PROCHAIN MODULE</p>
-            <h2>Marketplace administrable</h2>
-            <p>
-              Le prochain sprint ajoutera la création, la modification, la publication et la suppression des véhicules, maisons et VIP.
-            </p>
-            <div class="progress">
-              <span style="width: 35%"></span>
-            </div>
-            <small>Fondation du CMS complétée</small>
-          </article>
-        </aside>
-      </section>
-    </main>
-  </div>
-
-  <script src="admin.js"></script>
+      </aside>
+    </section>
+  </main>
+</div>
+<script src="admin.js"></script>
 </body>
 </html>
