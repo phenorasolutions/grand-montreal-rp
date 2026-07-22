@@ -36,7 +36,11 @@ function render(){
         <p>${escapeHtml(asset.altText||"Aucun texte alternatif")}</p>
         <div class="media-meta">
           <span>${escapeHtml(formatBytes(asset.sizeBytes))}</span>
-          <span>${escapeHtml(asset.uploadedBy)}</span>
+<span>
+  ${asset.usedByCount > 0
+    ? `Utilisée par ${asset.usedByCount} fiche${asset.usedByCount > 1 ? "s" : ""}`
+    : "Non utilisée"}
+</span>
         </div>
         <div class="media-actions">
           <button data-copy="${escapeHtml(asset.url)}">Copier le lien</button>
