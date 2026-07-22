@@ -59,9 +59,18 @@ export async function onRequestGet(context) {
        ORDER BY m.id DESC`
     ).all();
 
-    return json({
-      success: true,
-      assets: (result.results || []).map((row) => ({
+    const assets = [];
+
+    for (const row of result.results || []) {
+      const url = publicUrl(context.request, row.object_key);
+
+      const usage = await db.prepare(
+        `SELECT COUNT(*) AS total
+         FROM marketplace_items
+         WHERE image_url = ?1`
+      ).bind(url).first();
+
+      assets.push({
         id: row.id,
         objectKey: row.object_key,
         originalName: row.original_name,
@@ -70,8 +79,14 @@ export async function onRequestGet(context) {
         altText: row.alt_text || "",
         uploadedBy: row.uploaded_by_name || "Système",
         createdAt: row.created_at,
-        url: publicUrl(context.request, row.object_key)
-      }))
+        url,
+        usedByCount: Number(usage?.total || 0)
+      });
+    }
+
+    return json({
+      success: true,
+      assets
     });
   } catch (error) {
     if (error instanceof Response) return error;
@@ -180,7 +195,8 @@ export async function onRequestPost(context) {
         contentType: file.type,
         sizeBytes: file.size,
         altText,
-        url: publicUrl(context.request, objectKey)
+        url: publicUrl(context.request, objectKey),
+        usedByCount: 0
       }
     }, 201);
   } catch (error) {
