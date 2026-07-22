@@ -520,3 +520,42 @@ a {
     text-align: left;
   }
 }
+
+/* Grand Montréal RP CMS — correction globale des menus déroulants */
+
+/*
+  À ajouter tout en bas de admin.css.
+  Le color-scheme aide le navigateur à utiliser des contrôles natifs sombres.
+*/
+:root {
+  color-scheme: dark;
+}
+
+select {
+  color: #f5f7fa !important;
+  background-color: #10151d !important;
+  border-color: rgba(255, 255, 255, 0.09);
+  color-scheme: dark;
+}
+
+select option,
+select optgroup {
+  color: #f5f7fa !important;
+  background-color: #10151d !important;
+}
+
+/* Évite qu'une option sélectionnée ou survolée devienne illisible. */
+select option:checked {
+  color: #ffffff !important;
+  background-color: #d11f2f !important;
+}
+
+/* Compatibilité supplémentaire pour certains navigateurs Windows. */
+@media (forced-colors: none) {
+  select,
+  select option,
+  select optgroup {
+    -webkit-text-fill-color: #f5f7fa;
+  }
+}
+
