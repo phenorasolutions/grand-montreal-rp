@@ -8,6 +8,11 @@ import {
 
 import { ensureMediaSchema } from "./_schema.js";
 
+function publicUrl(request, objectKey) {
+  const origin = new URL(request.url).origin;
+  return `${origin}/api/media/file/${encodeURIComponent(objectKey)}`;
+}
+
 export async function onRequestDelete(context) {
   try {
     assertSameOrigin(context.request);
@@ -40,6 +45,22 @@ export async function onRequestDelete(context) {
 
     if (!asset) {
       return json({ success: false, error: "Image introuvable." }, 404);
+    }
+
+    const url = publicUrl(context.request, asset.object_key);
+    const usage = await db.prepare(
+      `SELECT COUNT(*) AS total
+       FROM marketplace_items
+       WHERE image_url = ?1`
+    ).bind(url).first();
+
+    const usedByCount = Number(usage?.total || 0);
+
+    if (usedByCount > 0) {
+      return json({
+        success: false,
+        error: `Cette image est utilisée par ${usedByCount} fiche${usedByCount > 1 ? "s" : ""} du Marketplace. Retire-la des fiches avant de la supprimer.`
+      }, 409);
     }
 
     await bucket.delete(asset.object_key);
