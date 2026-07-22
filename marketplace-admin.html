@@ -4,133 +4,145 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#07090d">
-  <title>Marketplace — Grand Montréal RP</title>
+  <title>Marketplace Pro — Grand Montréal RP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
-  <link rel="stylesheet" href="marketplace-admin.css">
-  <link rel="stylesheet" href="media-picker.css">
+  <link rel="stylesheet" href="marketplace-pro.css">
 </head>
 <body>
-  <div class="app hidden" id="marketplaceApp">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="brand-mark">GM</div>
-        <div><strong>GRAND MONTRÉAL RP</strong><span>BACKOFFICE</span></div>
-      </div>
-
-      <nav class="sidebar-nav">
-        <a href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
-        <a class="active" href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
-        <a href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
-        <a href="#" aria-disabled="true"><span class="nav-icon">●</span>Utilisateurs<small>Bientôt</small></a>
-      </nav>
-
-      <div class="sidebar-footer">
-        <div class="profile">
-          <div class="profile-avatar" id="profileAvatar">—</div>
-          <div><strong id="staffName">—</strong><span id="staffRole">—</span></div>
-        </div>
-        <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
-      </div>
-    </aside>
-
-    <main class="main">
-      <header class="topbar marketplace-topbar">
-        <div>
-          <p class="eyebrow">GESTION DU CATALOGUE</p>
-          <h1>Marketplace</h1>
-          <p class="subtitle">Ajoute et gère les véhicules, maisons et formules VIP.</p>
-        </div>
-        <button class="primary-action" id="newItemButton" type="button">+ Ajouter</button>
-      </header>
-
-      <section class="marketplace-toolbar">
-        <div class="filters">
-          <button class="filter active" data-filter="all">Tout</button>
-          <button class="filter" data-filter="vehicle">Véhicules</button>
-          <button class="filter" data-filter="house">Maisons</button>
-          <button class="filter" data-filter="vip">VIP</button>
-        </div>
-        <input class="search-input" id="searchInput" type="search" placeholder="Rechercher…">
-      </section>
-
-      <section class="marketplace-list" id="marketplaceList">
-        <div class="empty-state">Chargement du Marketplace…</div>
-      </section>
-    </main>
-  </div>
-
-  <dialog class="item-dialog" id="itemDialog">
-    <form class="item-form" id="itemForm">
-      <header class="dialog-header">
-        <div><p class="eyebrow">MARKETPLACE</p><h2 id="dialogTitle">Ajouter un élément</h2></div>
-        <button class="dialog-close" type="button" id="closeDialog" aria-label="Fermer">×</button>
-      </header>
-
-      <input type="hidden" name="id">
-
-      <div class="form-grid">
-        <label>Catégorie
-          <select name="type" required>
-            <option value="vehicle">Véhicule</option>
-            <option value="house">Maison</option>
-            <option value="vip">VIP</option>
-          </select>
-        </label>
-        <label>Nom<input name="name" maxlength="120" required></label>
-        <label>Prix affiché<input name="priceLabel" maxlength="80" placeholder="Ex. Sur demande"></label>
-        <label>Badge<input name="badge" maxlength="40" placeholder="Ex. Nouveau"></label>
-
-        <div class="image-field full">
-          <span class="image-field-label">Image principale</span>
-          <input name="imageUrl" type="hidden">
-
-          <div class="selected-media" id="selectedMedia">
-            <div class="selected-media-empty">Aucune image sélectionnée</div>
-          </div>
-
-          <div class="selected-media-actions">
-            <button class="secondary-action" type="button" id="chooseMediaButton">Choisir dans la médiathèque</button>
-            <button class="secondary-action" type="button" id="clearMediaButton">Retirer l'image</button>
-          </div>
-        </div>
-
-        <label class="full">Description<textarea name="description" rows="6" maxlength="5000"></textarea></label>
-        <label class="checkbox-row full"><input name="published" type="checkbox" checked> Publier dans le catalogue public</label>
-      </div>
-
-      <div class="form-message" id="formMessage"></div>
-
-      <footer class="dialog-actions">
-        <button class="secondary-action" type="button" id="cancelButton">Annuler</button>
-        <button class="primary-action" id="saveButton" type="submit">Enregistrer</button>
-      </footer>
-    </form>
-  </dialog>
-
-  <dialog class="media-picker-dialog" id="mediaPickerDialog">
-    <div class="media-picker-shell">
-      <header class="media-picker-header">
-        <div>
-          <p class="eyebrow">MÉDIATHÈQUE</p>
-          <h2>Choisir une image</h2>
-        </div>
-        <button class="dialog-close" type="button" id="closeMediaPicker" aria-label="Fermer">×</button>
-      </header>
-
-      <div class="media-picker-toolbar">
-        <input id="mediaPickerSearch" type="search" placeholder="Rechercher une image…">
-      </div>
-
-      <section class="media-picker-grid" id="mediaPickerGrid">
-        <div class="empty-state">Chargement de la médiathèque…</div>
-      </section>
+<div class="app hidden" id="marketplaceApp">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">GM</div><div><strong>GRAND MONTRÉAL RP</strong><span>BACKOFFICE</span></div></div>
+    <nav class="sidebar-nav">
+      <a href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
+      <a class="active" href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
+      <a href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
+      <a href="#" aria-disabled="true"><span class="nav-icon">●</span>Utilisateurs<small>Bientôt</small></a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="profile"><div class="profile-avatar" id="profileAvatar">—</div><div><strong id="staffName">—</strong><span id="staffRole">—</span></div></div>
+      <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
     </div>
-  </dialog>
+  </aside>
 
-  <script src="marketplace-admin.js"></script>
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MILESTONE 1</p>
+        <h1>Marketplace Pro</h1>
+        <p class="subtitle">Fiches détaillées, galerie, vedettes et ordre d'affichage.</p>
+      </div>
+      <button class="primary-action" id="newItemButton" type="button">+ Ajouter</button>
+    </header>
+
+    <section class="marketplace-toolbar">
+      <div class="filters">
+        <button class="filter active" data-filter="all">Tout</button>
+        <button class="filter" data-filter="vehicle">Véhicules</button>
+        <button class="filter" data-filter="house">Maisons</button>
+        <button class="filter" data-filter="vip">VIP</button>
+      </div>
+      <input class="search-input" id="searchInput" type="search" placeholder="Rechercher…">
+    </section>
+
+    <section class="marketplace-list" id="marketplaceList">
+      <div class="empty-state">Chargement…</div>
+    </section>
+  </main>
+</div>
+
+<dialog class="item-dialog" id="itemDialog">
+  <form class="item-form" id="itemForm">
+    <header class="dialog-header">
+      <div><p class="eyebrow">ÉDITEUR</p><h2 id="dialogTitle">Ajouter un élément</h2></div>
+      <button class="dialog-close" id="closeDialog" type="button">×</button>
+    </header>
+
+    <input type="hidden" name="id">
+
+    <div class="tabs">
+      <button type="button" class="tab active" data-tab="general">Général</button>
+      <button type="button" class="tab" data-tab="details">Détails</button>
+      <button type="button" class="tab" data-tab="media">Médias</button>
+      <button type="button" class="tab" data-tab="display">Affichage</button>
+    </div>
+
+    <section class="tab-panel active" data-panel="general">
+      <div class="form-grid">
+        <label>Catégorie<select name="type" id="typeField"><option value="vehicle">Véhicule</option><option value="house">Maison</option><option value="vip">VIP</option></select></label>
+        <label>Nom<input name="name" maxlength="120" required></label>
+        <label>Prix affiché<input name="priceLabel" maxlength="80" placeholder="Sur demande"></label>
+        <label>Badge<input name="badge" maxlength="40" placeholder="Nouveau"></label>
+        <label class="full">Description<textarea name="description" rows="6" maxlength="5000"></textarea></label>
+      </div>
+    </section>
+
+    <section class="tab-panel" data-panel="details">
+      <div id="vehicleFields" class="conditional-fields form-grid">
+        <label>Marque<input name="brand"></label><label>Modèle<input name="model"></label>
+        <label>Année<input name="year"></label><label>Catégorie<input name="vehicleCategory" placeholder="SUV, Berline…"></label>
+        <label>Transmission<input name="transmission"></label><label>Motricité<input name="drivetrain" placeholder="AWD, RWD…"></label>
+        <label>Places<input name="seats" type="number" min="0" max="20"></label><label>Vitesse maximale<input name="topSpeed" placeholder="Ex. 320 km/h"></label>
+        <label>Accélération<input name="acceleration" type="number" min="0" max="100"></label>
+        <label>Freinage<input name="braking" type="number" min="0" max="100"></label>
+        <label>Traction<input name="traction" type="number" min="0" max="100"></label>
+      </div>
+
+      <div id="houseFields" class="conditional-fields form-grid hidden">
+        <label>Quartier<input name="district"></label><label>Style<input name="houseStyle"></label>
+        <label>Chambres<input name="bedrooms" type="number" min="0"></label><label>Salles de bain<input name="bathrooms" type="number" min="0"></label>
+        <label>Places garage<input name="garage" type="number" min="0"></label>
+        <label class="check"><input name="pool" type="checkbox"> Piscine</label>
+        <label class="check"><input name="garden" type="checkbox"> Jardin</label>
+        <label class="check"><input name="helipad" type="checkbox"> Héliport</label>
+      </div>
+
+      <div id="vipFields" class="conditional-fields hidden">
+        <label class="stack">Avantages — un par ligne<textarea name="benefits" rows="10" placeholder="Priorité de connexion&#10;Points citoyens&#10;Badge Discord"></textarea></label>
+        <label class="stack">Accent visuel<input name="accent" placeholder="Rouge, Or, Argent…"></label>
+      </div>
+    </section>
+
+    <section class="tab-panel" data-panel="media">
+      <div class="media-section">
+        <h3>Image principale</h3>
+        <input name="imageUrl" type="hidden">
+        <div id="selectedMedia" class="selected-media"><span>Aucune image</span></div>
+        <button class="secondary-action" id="chooseMainMedia" type="button">Choisir l'image principale</button>
+      </div>
+
+      <div class="media-section">
+        <div class="section-title"><h3>Galerie</h3><span>12 images maximum</span></div>
+        <div id="galleryList" class="gallery-list"></div>
+        <button class="secondary-action" id="addGalleryMedia" type="button">+ Ajouter une image</button>
+      </div>
+    </section>
+
+    <section class="tab-panel" data-panel="display">
+      <div class="form-grid">
+        <label>Ordre d'affichage<input name="sortOrder" type="number" min="0" max="9999" value="0"></label>
+        <label>Disponibilité<select name="availability"><option value="available">Disponible</option><option value="limited">Limité</option><option value="unavailable">Indisponible</option></select></label>
+        <label class="check full"><input name="featured" type="checkbox"> Mettre en vedette</label>
+        <label class="check full"><input name="published" type="checkbox" checked> Publier sur le site</label>
+        <label class="full">Tags séparés par des virgules<input name="tags" placeholder="Nouveau, Luxe, Populaire"></label>
+      </div>
+    </section>
+
+    <div id="formMessage" class="form-message"></div>
+    <footer class="dialog-actions"><button class="secondary-action" id="cancelButton" type="button">Annuler</button><button class="primary-action" id="saveButton" type="submit">Enregistrer</button></footer>
+  </form>
+</dialog>
+
+<dialog class="media-picker-dialog" id="mediaPickerDialog">
+  <div class="media-picker-shell">
+    <header class="dialog-header"><div><p class="eyebrow">MÉDIATHÈQUE</p><h2>Choisir une image</h2></div><button class="dialog-close" id="closeMediaPicker" type="button">×</button></header>
+    <input id="mediaPickerSearch" class="picker-search" type="search" placeholder="Rechercher…">
+    <div id="mediaPickerGrid" class="media-picker-grid"></div>
+  </div>
+</dialog>
+
+<script src="marketplace-pro.js"></script>
 </body>
 </html>
