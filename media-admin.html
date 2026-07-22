@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#07090d">
+  <title>Médiathèque — Grand Montréal RP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="media-admin.css">
+</head>
+<body>
+  <div class="app hidden" id="mediaApp">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">GM</div>
+        <div>
+          <strong>GRAND MONTRÉAL RP</strong>
+          <span>BACKOFFICE</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
+        <a href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
+        <a class="active" href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
+        <a href="#" aria-disabled="true"><span class="nav-icon">●</span>Utilisateurs<small>Bientôt</small></a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="profile">
+          <div class="profile-avatar" id="profileAvatar">—</div>
+          <div>
+            <strong id="staffName">—</strong>
+            <span id="staffRole">—</span>
+          </div>
+        </div>
+        <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar media-topbar">
+        <div>
+          <p class="eyebrow">GESTION DES IMAGES</p>
+          <h1>Médiathèque</h1>
+          <p class="subtitle">Téléverse, consulte et réutilise les images du serveur.</p>
+        </div>
+      </header>
+
+      <section class="upload-panel">
+        <form id="uploadForm" class="upload-form">
+          <label class="drop-zone" id="dropZone">
+            <input id="fileInput" name="file" type="file" accept="image/jpeg,image/png,image/webp,image/gif" required>
+            <strong>Déposer une image ici</strong>
+            <span>ou cliquer pour choisir un fichier</span>
+            <small>JPG, PNG, WEBP ou GIF — 8 Mo maximum</small>
+          </label>
+
+          <label class="alt-field">
+            Texte alternatif
+            <input name="altText" maxlength="250" placeholder="Décris brièvement l’image">
+          </label>
+
+          <button class="upload-button" id="uploadButton" type="submit">Téléverser</button>
+          <div class="upload-message" id="uploadMessage"></div>
+        </form>
+      </section>
+
+      <section class="media-toolbar">
+        <div>
+          <strong id="assetCount">0 image</strong>
+          <span>dans la médiathèque</span>
+        </div>
+        <input id="mediaSearch" type="search" placeholder="Rechercher par nom…">
+      </section>
+
+      <section class="media-grid" id="mediaGrid">
+        <div class="empty-state">Chargement de la médiathèque…</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="media-admin.js"></script>
+</body>
+</html>
