@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#07090d">
+  <title>Marketplace — Grand Montréal RP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="marketplace-admin.css">
+</head>
+<body>
+  <div class="app hidden" id="marketplaceApp">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">GM</div>
+        <div><strong>GRAND MONTRÉAL RP</strong><span>BACKOFFICE</span></div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
+        <a class="active" href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
+        <a href="#" aria-disabled="true"><span class="nav-icon">●</span>Utilisateurs<small>Bientôt</small></a>
+        <a href="#" aria-disabled="true"><span class="nav-icon">≡</span>Logs<small>Bientôt</small></a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="profile">
+          <div class="profile-avatar" id="profileAvatar">—</div>
+          <div><strong id="staffName">—</strong><span id="staffRole">—</span></div>
+        </div>
+        <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar marketplace-topbar">
+        <div>
+          <p class="eyebrow">GESTION DU CATALOGUE</p>
+          <h1>Marketplace</h1>
+          <p class="subtitle">Ajoute et gère les véhicules, maisons et formules VIP.</p>
+        </div>
+        <button class="primary-action" id="newItemButton" type="button">+ Ajouter</button>
+      </header>
+
+      <section class="marketplace-toolbar">
+        <div class="filters">
+          <button class="filter active" data-filter="all">Tout</button>
+          <button class="filter" data-filter="vehicle">Véhicules</button>
+          <button class="filter" data-filter="house">Maisons</button>
+          <button class="filter" data-filter="vip">VIP</button>
+        </div>
+        <input class="search-input" id="searchInput" type="search" placeholder="Rechercher…">
+      </section>
+
+      <section class="marketplace-list" id="marketplaceList">
+        <div class="empty-state">Chargement du Marketplace…</div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="item-dialog" id="itemDialog">
+    <form class="item-form" id="itemForm">
+      <header class="dialog-header">
+        <div><p class="eyebrow">MARKETPLACE</p><h2 id="dialogTitle">Ajouter un élément</h2></div>
+        <button class="dialog-close" type="button" id="closeDialog" aria-label="Fermer">×</button>
+      </header>
+
+      <input type="hidden" name="id">
+
+      <div class="form-grid">
+        <label>Catégorie
+          <select name="type" required>
+            <option value="vehicle">Véhicule</option>
+            <option value="house">Maison</option>
+            <option value="vip">VIP</option>
+          </select>
+        </label>
+        <label>Nom<input name="name" maxlength="120" required></label>
+        <label>Prix affiché<input name="priceLabel" maxlength="80" placeholder="Ex. Sur demande"></label>
+        <label>Badge<input name="badge" maxlength="40" placeholder="Ex. Nouveau"></label>
+        <label class="full">URL de l'image<input name="imageUrl" type="url" maxlength="1000" placeholder="https://..."></label>
+        <label class="full">Description<textarea name="description" rows="6" maxlength="5000"></textarea></label>
+        <label class="checkbox-row full"><input name="published" type="checkbox" checked> Publier dans le catalogue public</label>
+      </div>
+
+      <div class="form-message" id="formMessage"></div>
+
+      <footer class="dialog-actions">
+        <button class="secondary-action" type="button" id="cancelButton">Annuler</button>
+        <button class="primary-action" id="saveButton" type="submit">Enregistrer</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <script src="marketplace-admin.js"></script>
+</body>
+</html>
