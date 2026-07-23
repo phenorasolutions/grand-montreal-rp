@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Pages — Grand Montréal RP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="content-manager.css">
+</head>
+<body>
+<div class="app hidden" id="pagesApp">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">GM</div><div><strong>GRAND MONTRÉAL RP</strong><span>BACKOFFICE</span></div></div>
+    <nav class="sidebar-nav">
+      <a href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
+      <a href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
+      <a href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
+      <a class="active" href="pages-admin.html"><span class="nav-icon">▤</span>Pages</a>
+      <a href="users-admin.html"><span class="nav-icon">●</span>Utilisateurs</a>
+      <a href="logs-admin.html"><span class="nav-icon">≡</span>Logs</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="profile"><div class="profile-avatar" id="profileAvatar">—</div><div><strong id="staffName">—</strong><span id="staffRole">—</span></div></div>
+      <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MILESTONE 3A</p>
+        <h1>Pages</h1>
+        <p class="subtitle">Construis et publie les pages du site sans toucher au HTML.</p>
+      </div>
+      <button class="primary-action" id="newPageButton" type="button">+ Nouvelle page</button>
+    </header>
+
+    <section class="page-list" id="pageList">
+      <div class="empty-state">Chargement…</div>
+    </section>
+  </main>
+</div>
+
+<dialog class="editor-dialog" id="editorDialog">
+  <form id="pageForm">
+    <header class="editor-header">
+      <div>
+        <p class="eyebrow">ÉDITEUR DE PAGE</p>
+        <h2 id="editorTitle">Modifier la page</h2>
+      </div>
+      <div class="editor-header-actions">
+        <span id="saveState">Aucune modification</span>
+        <button type="button" class="secondary-action" id="previewButton">Aperçu</button>
+        <button type="submit" class="primary-action" id="savePageButton">Enregistrer</button>
+        <button type="button" class="dialog-close" id="closeEditor">×</button>
+      </div>
+    </header>
+
+    <input type="hidden" name="id">
+
+    <div class="editor-layout">
+      <aside class="editor-sidebar">
+        <button type="button" class="editor-tab active" data-tab="content">Contenu</button>
+        <button type="button" class="editor-tab" data-tab="hero">Hero</button>
+        <button type="button" class="editor-tab" data-tab="seo">SEO</button>
+        <button type="button" class="editor-tab" data-tab="history">Historique</button>
+      </aside>
+
+      <section class="editor-main">
+        <div class="editor-panel active" data-panel="content">
+          <div class="form-grid">
+            <label class="full">Titre de la page<input name="title" maxlength="120" required></label>
+            <label>Statut<select name="status"><option value="draft">Brouillon</option><option value="published">Publié</option></select></label>
+          </div>
+
+          <div class="block-toolbar">
+            <button type="button" data-add-block="heading">+ Titre</button>
+            <button type="button" data-add-block="paragraph">+ Paragraphe</button>
+            <button type="button" data-add-block="quote">+ Citation</button>
+            <button type="button" data-add-block="list">+ Liste</button>
+            <button type="button" data-add-block="image">+ Image</button>
+            <button type="button" data-add-block="button">+ Bouton</button>
+            <button type="button" data-add-block="divider">+ Séparateur</button>
+          </div>
+
+          <div class="blocks-list" id="blocksList"></div>
+        </div>
+
+        <div class="editor-panel" data-panel="hero">
+          <div class="form-grid">
+            <label class="full">Sur-titre<input name="heroKicker" maxlength="100"></label>
+            <label class="full">Titre principal<input name="heroTitle" maxlength="180"></label>
+            <label class="full">Sous-titre<textarea name="heroSubtitle" rows="4" maxlength="400"></textarea></label>
+          </div>
+
+          <div class="hero-media">
+            <input name="heroImage" type="hidden">
+            <div id="heroPreview" class="hero-preview">Aucune image</div>
+            <button class="secondary-action" type="button" id="chooseHeroImage">Choisir dans la médiathèque</button>
+            <button class="secondary-action" type="button" id="clearHeroImage">Retirer</button>
+          </div>
+        </div>
+
+        <div class="editor-panel" data-panel="seo">
+          <div class="form-grid">
+            <label class="full">Titre SEO<input name="seoTitle" maxlength="120"></label>
+            <label class="full">Description SEO<textarea name="seoDescription" rows="5" maxlength="240"></textarea></label>
+          </div>
+        </div>
+
+        <div class="editor-panel" data-panel="history">
+          <div id="revisionsList" class="revisions-list"></div>
+        </div>
+
+        <div id="formMessage" class="form-message"></div>
+      </section>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="preview-dialog" id="previewDialog">
+  <div class="preview-shell">
+    <button class="dialog-close preview-close" id="closePreview" type="button">×</button>
+    <div id="previewContent"></div>
+  </div>
+</dialog>
+
+<dialog class="media-picker-dialog" id="mediaDialog">
+  <div class="media-picker-shell">
+    <header class="editor-header">
+      <div><p class="eyebrow">MÉDIATHÈQUE</p><h2>Choisir une image</h2></div>
+      <button class="dialog-close" id="closeMediaDialog" type="button">×</button>
+    </header>
+    <input id="mediaSearch" class="media-search" type="search" placeholder="Rechercher…">
+    <div id="mediaGrid" class="media-grid-picker"></div>
+  </div>
+</dialog>
+
+<dialog class="new-page-dialog" id="newPageDialog">
+  <form id="newPageForm">
+    <header class="editor-header">
+      <div><p class="eyebrow">NOUVELLE PAGE</p><h2>Créer une page</h2></div>
+      <button class="dialog-close" id="closeNewPage" type="button">×</button>
+    </header>
+    <div class="form-grid">
+      <label class="full">Titre<input name="title" required maxlength="120"></label>
+      <label class="full">Slug<input name="slug" required maxlength="80" placeholder="ex. reglements"></label>
+    </div>
+    <div id="newPageMessage" class="form-message"></div>
+    <footer class="dialog-actions">
+      <button class="secondary-action" id="cancelNewPage" type="button">Annuler</button>
+      <button class="primary-action" type="submit">Créer</button>
+    </footer>
+  </form>
+</dialog>
+
+<script src="pages-admin.js"></script>
+</body>
+</html>
