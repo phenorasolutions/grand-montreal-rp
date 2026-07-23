@@ -96,8 +96,12 @@ a { color: inherit; }
 .main-nav {
   justify-self: center;
   display: flex;
-  gap: clamp(18px,2.4vw,36px);
   align-items: center;
+  gap: 24px;
+}
+
+.main-nav a {
+  white-space: nowrap;
 }
 .main-nav a {
   position: relative;
