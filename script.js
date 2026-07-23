@@ -7,7 +7,7 @@ const cursorGlow = document.querySelector("#cursorGlow");
 
 function updateHeader() {
   if (!siteHeader) return;
-  siteHeader.classList.toggle("scrolled", window.scrollY > 20 || document.body.classList.contains("shop-page"));
+  siteHeader.classList.add("scrolled");
 }
 
 updateHeader();
