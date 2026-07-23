@@ -367,7 +367,7 @@
 
 /* Keep the boutique header aligned with the complete home navigation. */
 .shop-page .main-nav {
-  gap: clamp(14px, 1.8vw, 28px);
+  gap: 24px;
 }
 
 @media (max-width: 1180px) {
