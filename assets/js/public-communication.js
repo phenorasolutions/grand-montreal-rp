@@ -22,7 +22,7 @@ const GMRPCommunication = {
 
   renderCard(post) {
     const e=this.escape.bind(this);
-    return `<article class="news-card reveal">
+    return `<article class="news-card">
       ${post.imageUrl?`<img src="${e(post.imageUrl)}" alt="">`:"<div class='news-card-placeholder'></div>"}
       <div class="news-card-body">
         <p>${e(post.category||post.type)}</p>
