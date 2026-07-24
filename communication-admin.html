@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Communication — Grand Montréal RP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="communication-admin.css">
+</head>
+<body>
+<div class="app hidden" id="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">GM</div><div><strong>GRAND MONTRÉAL RP</strong><span>BACKOFFICE</span></div></div>
+    <nav class="sidebar-nav">
+      <a href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
+      <a href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
+      <a href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
+      <a class="active" href="communication-admin.html"><span class="nav-icon">✦</span>Communication</a>
+      <a href="users-admin.html"><span class="nav-icon">●</span>Utilisateurs</a>
+      <a href="logs-admin.html"><span class="nav-icon">≡</span>Logs</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="profile"><div class="profile-avatar" id="profileAvatar">—</div><div><strong id="staffName">—</strong><span id="staffRole">—</span></div></div>
+      <button class="logout-button" id="logoutButton">Déconnexion</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><p class="eyebrow">MILESTONE 3B</p><h1>Communication</h1><p class="subtitle">Actualités, annonces et changelog.</p></div>
+      <button class="primary-action" id="newButton">+ Nouvelle publication</button>
+    </header>
+
+    <section class="filters">
+      <select id="typeFilter">
+        <option value="">Tous les types</option>
+        <option value="news">Actualités</option>
+        <option value="announcement">Annonces</option>
+        <option value="changelog">Changelog</option>
+      </select>
+      <select id="statusFilter">
+        <option value="">Tous les statuts</option>
+        <option value="published">Publié</option>
+        <option value="draft">Brouillon</option>
+      </select>
+      <input id="searchInput" type="search" placeholder="Rechercher…">
+    </section>
+
+    <section class="post-list" id="postList"><div class="empty-state">Chargement…</div></section>
+  </main>
+</div>
+
+<dialog id="editorDialog" class="editor-dialog">
+  <form id="editorForm">
+    <header class="dialog-header">
+      <div><p class="eyebrow">PUBLICATION</p><h2 id="dialogTitle">Nouvelle publication</h2></div>
+      <button type="button" class="dialog-close" id="closeDialog">×</button>
+    </header>
+
+    <input type="hidden" name="id">
+
+    <div class="form-grid">
+      <label>Type
+        <select name="type">
+          <option value="news">Actualité</option>
+          <option value="announcement">Annonce</option>
+          <option value="changelog">Changelog</option>
+        </select>
+      </label>
+      <label>Statut
+        <select name="status">
+          <option value="draft">Brouillon</option>
+          <option value="published">Publié</option>
+        </select>
+      </label>
+      <label class="full">Titre<input name="title" maxlength="160" required></label>
+      <label class="full">Slug<input name="slug" maxlength="100"></label>
+      <label>Catégorie<input name="category" maxlength="80"></label>
+      <label>Version<input name="version" maxlength="40" placeholder="ex. 1.2.0"></label>
+      <label class="full">Résumé<textarea name="summary" rows="3" maxlength="500"></textarea></label>
+      <label class="full">Contenu<textarea name="content" rows="10" maxlength="12000"></textarea></label>
+      <label class="full">URL de l’image<input name="imageUrl" maxlength="1000"></label>
+      <label>Ordre<input name="sortOrder" type="number" value="0"></label>
+      <label>Niveau bannière
+        <select name="bannerLevel">
+          <option value="info">Information</option>
+          <option value="success">Succès</option>
+          <option value="warning">Avertissement</option>
+          <option value="danger">Important</option>
+        </select>
+      </label>
+      <label class="check"><input name="featured" type="checkbox"> Mettre en avant</label>
+      <label class="check"><input name="bannerEnabled" type="checkbox"> Afficher comme bannière globale</label>
+    </div>
+
+    <div class="form-message" id="formMessage"></div>
+    <footer class="dialog-actions">
+      <button type="button" class="secondary-action" id="cancelButton">Annuler</button>
+      <button type="submit" class="primary-action">Enregistrer</button>
+    </footer>
+  </form>
+</dialog>
+
+<script src="communication-admin.js"></script>
+</body>
+</html>

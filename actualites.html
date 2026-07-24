@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mises à jour, annonces importantes, événements et changements du serveur seront publiés ici.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Actualités, annonces et mises à jour de Grand Montréal RP.">
   <meta name="theme-color" content="#07090d">
   <title>Actualités — Grand Montréal RP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="assets/css/multipage.css">
+  <link rel="stylesheet" href="assets/css/communication-public.css">
 </head>
 <body class="multi-page">
   <div class="grain" aria-hidden="true"></div>
@@ -21,21 +22,25 @@
     <section class="page-hero">
       <div class="page-hero-content reveal">
         <p class="eyebrow">COMMUNICATION</p>
-        <h1>LES DERNIÈRES NOUVELLES DU GRAND MONTRÉAL</h1>
-        <p class="page-hero-lead">Mises à jour, annonces importantes, événements et changements du serveur seront publiés ici.</p>
+        <h1>LES DERNIÈRES<br><span>NOUVELLES</span></h1>
+        <p class="page-hero-lead">Actualités, événements, annonces importantes et suivi des mises à jour du serveur.</p>
       </div>
     </section>
 
     <section class="page-content">
-      <section class="news-placeholder">
-          Le module dynamique sera branché ici dans la prochaine partie de la Milestone 3.
-        </section>
+      <div class="section-heading reveal">
+        <p class="eyebrow">PUBLICATIONS</p>
+        <h2>CE QUI BOUGE DANS LA VILLE</h2>
+      </div>
+      <div class="news-grid" id="newsGrid"><div class="news-empty">Chargement…</div></div>
     </section>
   </main>
 
   <div data-site-footer></div>
   <script src="assets/js/site-shell.js"></script>
   <script src="assets/js/live-status.js"></script>
+  <script src="assets/js/public-communication.js"></script>
+  <script>GMRPCommunication.mountList("#newsGrid","?limit=30");</script>
   <script src="script.js"></script>
 </body>
 </html>
