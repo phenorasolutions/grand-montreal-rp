@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Une équipe structurée qui développe, encadre et fait évoluer Grand Montréal RP.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Découvrez l'équipe de Grand Montréal RP.">
   <meta name="theme-color" content="#07090d">
   <title>Équipe — Grand Montréal RP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="assets/css/multipage.css">
+  <link rel="stylesheet" href="assets/css/communication-public.css">
+  <link rel="stylesheet" href="assets/css/team-public.css">
 </head>
 <body class="multi-page">
   <div class="grain" aria-hidden="true"></div>
@@ -19,23 +21,26 @@
 
   <main>
     <section class="page-hero">
-      <div class="page-hero-content reveal">
+      <div class="page-hero-content">
         <p class="eyebrow">L'ÉQUIPE</p>
-        <h1>LES GENS DERRIÈRE LE PROJET</h1>
+        <h1>LES GENS DERRIÈRE<br><span>LE PROJET</span></h1>
         <p class="page-hero-lead">Une équipe structurée qui développe, encadre et fait évoluer Grand Montréal RP.</p>
       </div>
     </section>
 
     <section class="page-content">
-      <section class="team-placeholder">
-          Le module dynamique sera branché ici dans la prochaine partie de la Milestone 3.
-        </section>
+      <div id="teamDepartments" class="team-departments">
+        <div class="team-empty">Chargement…</div>
+      </div>
     </section>
   </main>
 
   <div data-site-footer></div>
+
   <script src="assets/js/site-shell.js"></script>
   <script src="assets/js/live-status.js"></script>
+  <script src="assets/js/public-communication.js"></script>
+  <script src="assets/js/public-team.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

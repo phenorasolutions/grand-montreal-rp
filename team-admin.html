@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Équipe — Grand Montréal RP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="team-admin.css">
+</head>
+<body>
+<div class="app hidden" id="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">GM</div><div><strong>GRAND MONTRÉAL RP</strong><span>BACKOFFICE</span></div></div>
+    <nav class="sidebar-nav">
+      <a href="admin.html"><span class="nav-icon">◫</span>Dashboard</a>
+      <a href="marketplace-admin.html"><span class="nav-icon">◆</span>Marketplace</a>
+      <a href="media-admin.html"><span class="nav-icon">▣</span>Médias</a>
+      <a href="communication-admin.html"><span class="nav-icon">✦</span>Communication</a>
+      <a class="active" href="team-admin.html"><span class="nav-icon">♟</span>Équipe</a>
+      <a href="users-admin.html"><span class="nav-icon">●</span>Utilisateurs</a>
+      <a href="logs-admin.html"><span class="nav-icon">≡</span>Logs</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="profile"><div class="profile-avatar" id="profileAvatar">—</div><div><strong id="staffName">—</strong><span id="staffRole">—</span></div></div>
+      <button class="logout-button" id="logoutButton">Déconnexion</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><p class="eyebrow">MILESTONE 3C</p><h1>Équipe</h1><p class="subtitle">Direction, administration, développement et modération.</p></div>
+      <button class="primary-action" id="newButton">+ Ajouter un membre</button>
+    </header>
+
+    <section class="filters">
+      <select id="departmentFilter">
+        <option value="">Tous les départements</option>
+      </select>
+      <select id="statusFilter">
+        <option value="">Tous les statuts</option>
+        <option value="visible">Visible</option>
+        <option value="hidden">Masqué</option>
+      </select>
+      <input id="searchInput" type="search" placeholder="Rechercher un membre…">
+    </section>
+
+    <section id="memberList" class="member-list">
+      <div class="empty-state">Chargement…</div>
+    </section>
+  </main>
+</div>
+
+<dialog id="editorDialog" class="editor-dialog">
+  <form id="editorForm">
+    <header class="dialog-header">
+      <div><p class="eyebrow">MEMBRE</p><h2 id="dialogTitle">Ajouter un membre</h2></div>
+      <button type="button" class="dialog-close" id="closeDialog">×</button>
+    </header>
+
+    <input type="hidden" name="id">
+
+    <div class="form-grid">
+      <label>Nom affiché<input name="displayName" maxlength="120" required></label>
+      <label>Rôle<input name="roleTitle" maxlength="120" required></label>
+      <label>Département<input name="department" maxlength="100" value="Direction"></label>
+      <label>Statut
+        <select name="status">
+          <option value="visible">Visible</option>
+          <option value="hidden">Masqué</option>
+        </select>
+      </label>
+      <label class="full">Description<textarea name="description" rows="5" maxlength="2000"></textarea></label>
+      <label class="full">URL de l'image<input name="imageUrl" maxlength="1000"></label>
+      <label>Discord<input name="discordName" maxlength="120"></label>
+      <label>Lien social<input name="socialUrl" maxlength="1000"></label>
+      <label>Ordre<input name="sortOrder" type="number" value="0"></label>
+      <label class="check"><input name="featured" type="checkbox"> Mettre en avant</label>
+    </div>
+
+    <div id="formMessage" class="form-message"></div>
+
+    <footer class="dialog-actions">
+      <button type="button" class="secondary-action" id="cancelButton">Annuler</button>
+      <button type="submit" class="primary-action">Enregistrer</button>
+    </footer>
+  </form>
+</dialog>
+
+<script src="team-admin.js"></script>
+</body>
+</html>
